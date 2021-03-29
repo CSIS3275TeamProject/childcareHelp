@@ -8,6 +8,7 @@ public class ChildcareHelpApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ChildcareHelpApplication.class, args);
+		//test by hye kyung ko
 	}
 
 }

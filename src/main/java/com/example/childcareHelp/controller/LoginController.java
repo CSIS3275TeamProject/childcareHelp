@@ -23,7 +23,8 @@ public class LoginController {
      */
     @RequestMapping("login")
     public String doLogin(ModelAndView model, HttpServletRequest req) {
-        //test
+
+        //test 2
         HttpSession session = req.getSession();
         String landingPage = "";
         String loginType = (String) req.getAttribute("loginType");
