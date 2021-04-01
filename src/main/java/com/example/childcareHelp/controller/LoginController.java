@@ -43,6 +43,7 @@ public class LoginController {
         landingPage = "contract/listOfAcceptContracts";
         return landingPage;
     }
+    //testing
     /*
      * execute Logout
      */
