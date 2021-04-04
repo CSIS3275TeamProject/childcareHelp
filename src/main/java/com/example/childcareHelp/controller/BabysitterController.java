@@ -28,7 +28,7 @@ public class BabysitterController {
      */
     @RequestMapping("/registerBabysitter")
     public String registerBabysitter(Babysitter babysitter, Model model) {
-        // model.addAttribute(babysitterService.createBabysitter(babysitter));
+        // model.addAttribute(babysitterService.createBabysitter(babysitter)); conflict test ____----------------------------
         return "/login";
     }
 
