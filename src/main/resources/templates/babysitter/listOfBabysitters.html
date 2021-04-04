@@ -1,13 +1,163 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>List Of Babysitter</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
+    <title>Babysitting</title>
 </head>
 <body>
-<h1>List Of Babysitter</h1>
-<form action="/babysitter/detailOfBabysitter" method="POST">
-    <button type="submit">Detail</button>
-</form>
+    <header>
+        <nav>
+            <div class="row">
+                <i class="fas fa-baby-carriage logo"></i>
+                <ul class="main-nav">
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Feature</a></li>
+                    <li><a href="/">Logout</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <section class="listOfBabysitters" id="siiterList">
+        <div class="row">
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+            <div class="col span-1-of-3">
+                <div class="sitter-box">
+                    <i class="fas fa-user-circle"></i>
+                    <p>Daisuke Kawabuchi</p>
+                    <p>Male</p>
+                    <p>1999/11/07</p>
+                    <p>College Graduate</p>
+                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="row">
+            <div class="col span-1-of-2">
+                <ul class="footer-nav">
+                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Press</a></li>
+                    <li><a href="#">iOS App</a></li>
+                    <li><a href="#">Android App</a></li>
+                </ul>
+            </div>
+            <div class="col span-1-of-2">
+                <ul class="social-links">
+                    <li><a href="#"><img src="https://img.icons8.com/ios-filled/26/000000/facebook-new.png" alt="icon"/></a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/fluent-systems-regular/26/000000/twitter.png" alt="icon"/></i></a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/metro/26/000000/google-plus.png" alt="icon"/></i></a></li>
+                    <li><a href="#"><img src="https://img.icons8.com/metro/26/000000/instagram-new.png" alt="icon"/></i></a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <p>
+                Copyright &copy; 2021 by Babytitting App All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="./js/animation.js"></script>
+
 </body>
 </html>
