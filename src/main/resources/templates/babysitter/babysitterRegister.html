@@ -15,31 +15,32 @@
 </head>
 <body>
     <div class="row">            
-            <form action="/login" method="POST">
+            <form th:object="${babysitter}" th:action="@{/babysitter/registerBabysitter}" action="#" method="POST">
                 <h3>Register as a Babysitter</h3>
-                <label for="">Your name</label>
-                <input type="text" placeholder="Your name" required>
                 <label for="">SNN</label>
-                <input type="text" placeholder="your snn" required>
+
+                <input th:field="*{snn}" type="text" placeholder="your snn" required>
+                <label for="">Your name</label>
+                <input th:field="*{name}" type="text" placeholder="Your name" required>
                 <label for="">Email</label>
-                <input type="email" name="login-email" id="login-email" placeholder="Email" required>
+                <input th:field="*{email}" type="email" name="login-email" id="login-email" placeholder="Email" required>
                 <label for="">Phone Number</label>
-                <input type="text" placeholder="Your number">
+                <input th:field="*{phoneNumber}" type="text" placeholder="Your number">
                 <label for="">Your Education Level</label>
-                <select name="education" id="education">
-                    <option value="highschool">highschool</option>
-                    <option value="college">college</option>
-                    <option value="phd">PHD</option>
+                <select th:field="*{highestEducation}" name="education" id="education">
+                    <option th:value="highschool">highschool</option>
+                    <option th:value="college">college</option>
+                    <option th:value="phd">PHD</option>
                 </select>
                 <label for="">Gender</label>
-                <select name="gender" id="gender">
-                    <option value="male">Male</option>
-                    <option value="female">Female</option>
+                <select th:field="*{gender}" name="gender" id="gender">
+                    <option th:value="male">Male</option>
+                    <option th:value="female">Female</option>
                 </select>
                 <label for="">Date of Birth</label>
-                <input type="date">
+                <input  th:field="*{dateOfBirth}" type="date">
                 <label for="">Password</label>
-                <input type="password" name="login-password" id="login-password" placeholder="Password" required>
+                <input th:field="*{password}" type="password" name="login-password" id="login-password" placeholder="Password" required>
                 <input type="submit" value="Register">
             </form> 
     </div>

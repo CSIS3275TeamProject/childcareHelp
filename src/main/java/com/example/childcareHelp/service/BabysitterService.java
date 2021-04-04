@@ -9,7 +9,8 @@ import java.util.Collection;
 import java.util.Optional;
 
 @Service
-public class BabysitterService {
+public class
+BabysitterService {
 
     @Autowired
     private BabysitterDAO babysitterDAO;
@@ -23,6 +24,7 @@ public class BabysitterService {
     }
 
     public Babysitter createBabysitter(Babysitter babysitter) {
+        System.out.println("[LOG]_BabysitterService_createrBabysitter_");
         return babysitterDAO.createBabysitter(babysitter);
     }
 }

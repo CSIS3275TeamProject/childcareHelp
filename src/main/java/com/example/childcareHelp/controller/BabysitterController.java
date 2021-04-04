@@ -5,8 +5,7 @@ import com.example.childcareHelp.service.BabysitterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/babysitter")
@@ -18,17 +17,19 @@ public class BabysitterController {
     /* testtesttesttesttest
      * move to input the information of a babysitter
      */
-    @RequestMapping("/register")
-    public String inputBabysitterInfo(Model model) {
-        return "babysitter/babysitterRegister";
+    @GetMapping("/register")
+    public String inputBabysitterInfo(@ModelAttribute("babysitter")  Babysitter babysitter, Model model) {
+        return "/babysitter/babysitterRegister";
     }
 
     /*
      * register the information of a babysitter
      */
-    @RequestMapping("/registerBabysitter")
-    public String registerBabysitter(Babysitter babysitter, Model model) {
-        // model.addAttribute(babysitterService.createBabysitter(babysitter));
+    @PostMapping("/registerBabysitter")
+    public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,
+                                     @ModelAttribute("loginInfo") LoginInfo loginInfo,  Model model) {
+
+        model.addAttribute("babysitter", babysitterService.createBabysitter(babysitter));
         return "/login";
     }
 
