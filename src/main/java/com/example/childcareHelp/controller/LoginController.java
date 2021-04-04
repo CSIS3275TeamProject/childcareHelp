@@ -59,6 +59,6 @@ public class LoginController {
      */
     @RequestMapping("")
     public String goMain() {
-        return "login";
+        return "main";
     }
 }
