@@ -17,9 +17,9 @@ public class FamilyController {
     /*
      * move to input the information of a family
      */
-    @RequestMapping("/inputFamilyInfo")
+    @RequestMapping("/register")
     public String inputFamilyInfo(Model model) {
-        return "family/inputFamilyInfo";
+        return "family/familyRegister";
     }
 
     /*

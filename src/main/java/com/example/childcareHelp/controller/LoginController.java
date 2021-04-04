@@ -40,7 +40,8 @@ public class LoginController {
             landingPage = "contract/listOfAcceptContracts";
         }
         //landingPage = "babysitter/listOfBabysitters";
-        landingPage = "contract/listOfAcceptContracts";
+        //landingPage = "contract/listOfAcceptContracts";
+        landingPage = "login";
         return landingPage;
     }
     //testing
