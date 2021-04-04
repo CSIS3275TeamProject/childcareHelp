@@ -15,7 +15,7 @@ public class BabysitterController {
     @Autowired
     private BabysitterService babysitterService;
 
-    /* testtesttesttest
+    /* testtesttesttesttest
      * move to input the information of a babysitter
      */
     @RequestMapping("/register")
