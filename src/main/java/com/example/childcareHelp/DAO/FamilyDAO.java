@@ -23,8 +23,7 @@ public class FamilyDAO {
     }
 
     public Family createFamily(Family family){
-//        return familyRepository.insert(family);
-        return null;
+        return familyRepository.insert(family);
     }
 }
 
