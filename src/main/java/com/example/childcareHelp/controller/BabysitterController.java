@@ -18,9 +18,9 @@ public class BabysitterController {
     /*
      * move to input the information of a babysitter
      */
-    @RequestMapping("/inputBabysitterInfo")
+    @RequestMapping("/register")
     public String inputBabysitterInfo(Model model) {
-        return "babysitter/inputBabysitterInfo";
+        return "babysitter/babysitterRegister";
     }
 
     /*

@@ -1,19 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Login Screen</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <title>Login</title>
 </head>
 <body>
-<h1>Login Screen</h1>
-    <form action="/babysitter/inputBabysitterInfo" method="POST">
-        <button type="submit">Register Become a sitter</button>
-    </form>
-    <form action="/family/inputFamilyInfo" method="POST">
-        <button type="submit">Register Family</button>
-    </form>
-    <form action="/login" method="POST">
-        <button type="submit">Login</button>
-    </form>
+    <div class="row">            
+            <form action="/babysitter/listOfBabysitters" method="POST">
+                <h3>Log in</h3>
+                <input type="email" name="login-email" id="login-email" placeholder="Email" required>
+                <input type="password" name="login-password" id="login-password" placeholder="Password" required>
+                <select name="user" id="user" required>
+                    <option value="0">I am a family</option>
+                    <option value="1">I am a babysitter</option>
+                </select>
+                <input type="submit" value="Login">
+            </form> 
+    </div>
+    
 </body>
 </html>
