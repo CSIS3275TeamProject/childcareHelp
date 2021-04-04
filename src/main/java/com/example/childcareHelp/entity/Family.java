@@ -21,7 +21,7 @@ public class Family {
     private String address;
     private String maritalStatus;
 
-    @OneToMany(cascade = CascadeType.ALL)
+
     private List<Child> children = new ArrayList<>();
 
     public List<Child> getChildren() {
