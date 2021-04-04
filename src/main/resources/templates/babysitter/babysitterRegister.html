@@ -17,11 +17,10 @@
     <div class="row">            
             <form th:object="${babysitter}" th:action="@{/babysitter/registerBabysitter}" action="#" method="POST">
                 <h3>Register as a Babysitter</h3>
-                <label for="">SNN</label>
-
-                <input th:field="*{snn}" type="text" placeholder="your snn" required>
                 <label for="">Your name</label>
                 <input th:field="*{name}" type="text" placeholder="Your name" required>
+                <label for="">SNN</label>
+                <input th:field="*{snn}" type="text" placeholder="your snn" required>
                 <label for="">Email</label>
                 <input th:field="*{email}" type="email" name="login-email" id="login-email" placeholder="Email" required>
                 <label for="">Phone Number</label>
