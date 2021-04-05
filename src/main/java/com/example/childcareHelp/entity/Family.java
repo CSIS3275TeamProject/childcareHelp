@@ -21,7 +21,6 @@ public class Family {
     private String address;
     private String maritalStatus;
 
-
     private List<Child> children = new ArrayList<>();
 
     public List<Child> getChildren() {
