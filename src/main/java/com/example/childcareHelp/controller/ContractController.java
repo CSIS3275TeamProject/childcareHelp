@@ -32,8 +32,8 @@ public class ContractController {
     /*
      * move to input the information of a contract
      */
-    //@GetMapping("/register")
-    @GetMapping("/registerContract")
+    @GetMapping("/register")
+    //@GetMapping("/registerContract")
     public String inputContractInfo(@ModelAttribute("contract")  Contract contract, Model model) {
         System.out.println("[LOG]_ContractController_registerContract_Start");
         return "contract/contractRegister";
