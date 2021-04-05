@@ -11,6 +11,7 @@
     <link rel="stylesheet" th:href="@{/css/login.css}">
     <link rel="stylesheet" th:href="@{/css/register.css}">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <script type="text/javascript" src="/js/family.js"></script>
     <title>Login</title>
 </head>
 <body>
@@ -31,17 +32,6 @@
                     <option value="married">married</option>
                     <option value="separated">separated</option>
                 </select>
-                <div id="childrenInfo">
-                    <label for="">Child's Name</label>
-                    <input type="text" name="children.name" placeholder="name of your child" value="child name">
-                    <label for="">Child's Gender</label>
-                    <select name="children.gender" id="gender">
-                        <option value="boy">boy</option>
-                        <option value="girl">girl</option>
-                    </select>
-                    <label for="">Date of Birth</label>
-                    <input type="date" value="2021-04-09" name="children.dateOfBirth">
-                </div>
                 <div id="childrenInfo">
                     <label for="">Child's Name</label>
                     <input type="text" name="children[0].name" placeholder="name of your child" value="child name">
