@@ -14,18 +14,20 @@
     <title>Detail of Babysitter</title>
 </head>
 <body>
+
     <div class="row">            
-            <div class="detail-box">
-                <i class="fas fa-user-circle"></i>
-                <p>Daisuke Kawabuchi</p>
-                <p>Male</p>
-                <p>daisuke@gmail.com</p>
-                <p>1999/11/07</p>
-                <p>000-000-0000</p>
-                <p>College Graduate</p>
-                <a href="#" class="btn btn-full">Request</a>
-            </div>
+        <div class="detail-box">
+            <i class="fas fa-user-circle"></i>
+            <p th:text="${babysitter.name}"></p>
+            <p th:text="${babysitter.gender}"></p>
+            <p th:text="${babysitter.email}"></p>
+            <p th:text="${babysitter.dateOfBirth}"></p>
+            <p th:text="${babysitter.phoneNumber}"></p>
+            <p th:text="${babysitter.highestEducation}"></p>
+            <a href="#" class="btn btn-full">Request</a>
+        </div>
     </div>
+
     
 </body>
 </html>

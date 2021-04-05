@@ -65,11 +65,13 @@
                         <p th:text="${babysitter.name}"></p>
                         <p th:text="${babysitter.gender}"></p>
                         <p th:text="${babysitter.highestEducation}"></p>
-                        <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                        <a th:href="@{/babysitter/listOfBabysitters/{id}(id=${babysitter.snn})}" class="btn btn-full">See Detail</a>
                     </div>
             </div>
         </div>
     </section>
+
+    <!-- th:href="@{/category/edit/{id}(id=${category.idCategory})}" -->
 
     <footer>
         <div class="row">
