@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmls="http://www.w3.org/1999/xthml"
+      xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/detailContract.css}">
+    <link href = 'https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel="stylesheet" type="'text/css">
+    <script src = "https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
     <title>Detail Of Request Contract</title>
 </head>
 <body>
-<h1>Detail Of Request Contract</h1>
-<form action="/contract/cancelContract" method="POST">
-    <button type="submit">Cancel</button>
+<h1>Requested contract</h1>
+<div class = "row">
+    <div class = "detail-box">
+
+        <p>Babysitter Name:</p>
+        <p>Gender:</p>
+        <p>Education Level: </p>
+        <p>Date of Birth: </p>
+        <p>Start Date:</p>
+        </br>
+
+        <div class="button-box">
+            <a class="btn btn-ghost" href="/contract/listOf">Cancel</a>
+        </div>
+    </div>
+</div>
+
 </form>
 
 </body>

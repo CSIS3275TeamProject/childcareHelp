@@ -1,17 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmls="http://www.w3.org/1999/xthml"
+                xmlns:th = "http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/detailContract.css}">
+    <link href = 'https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel="stylesheet" type="'text/css">
+    <script src = "https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
     <title>Detail Of Accept Contract</title>
 </head>
 <body>
-<h1>Detail Of Accept Contract</h1>
-<form action="/contract/updateContract" method="POST">
-    <button type="submit">Accept</button>
-</form>
-<form action="/contract/updateContract" method="POST">
-    <button type="submit">Deny</button>
-</form>
-<h1>Hey Sunghoan!</h1>
+    <div class = "row">
+        <div class = "detail-box">
+            <p>Babysitter Name:</p>
+            <p>Gender:</p>
+            <p>Education Level: </p>
+            <p>Date of Birth: </p>
+            <p>Start Date:</p>
+            </br>
+
+        <div class="button-box">
+            <a class="btn btn-full" href="/contract/listOf">Accept</a>
+            </form>
+            <a class="btn btn-full" href="/contract/listOf">Deny</a>
+            </form>
+        </div>
+        </div>
+    </div>
+
+<h1></h1>
 </body>
 </html>
