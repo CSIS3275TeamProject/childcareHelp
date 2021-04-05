@@ -39,15 +39,21 @@ public class FamilyController {
      */
     @RequestMapping("/registerFamily")
     public String registerFamily(Family family, Model model) {
-        long newFamilyId = sequenceGeneratorService.generateSequence(Family.SEQUENCE_NAME);
-        family.setFamilyID(newFamilyId);
-        List<Child> children = family.getChildren();
-        Family resultFamily = familyService.createFamily(family);
-        for (int i = 0; i < children.size(); i++) {
-            Child child = children.get(i);
-            child.setChildID(sequenceGeneratorService.generateSequence(Child.SEQUENCE_NAME));
-            child.setFamilyID(newFamilyId);
-            Child resultChild = childService.createChild(child);
+        boolean result = familyService.checkExistedFamily(family.getEmail());
+        if (!result) {
+            long newFamilyId = sequenceGeneratorService.generateSequence(Family.SEQUENCE_NAME);
+            family.setFamilyID(newFamilyId);
+            List<Child> children = family.getChildren();
+            Family resultFamily = familyService.createFamily(family);
+            for (int i = 0; i < children.size(); i++) {
+                Child child = children.get(i);
+                child.setChildID(sequenceGeneratorService.generateSequence(Child.SEQUENCE_NAME));
+                child.setFamilyID(newFamilyId);
+                Child resultChild = childService.createChild(child);
+            }
+        } else {
+            model.addAttribute("ERROR_MESSAGE","The email you entered is already existed");
+            return "family/familyRegister";
         }
 
         return "redirect:/login";
