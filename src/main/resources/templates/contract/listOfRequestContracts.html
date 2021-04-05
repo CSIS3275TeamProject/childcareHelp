@@ -1,11 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>List Of Request Contracts</title>
 </head>
 <body>
 <h1>List Of Request Contracts</h1>
+
+<table>
+    <tr>
+        <td>Contract#</td>
+        <td>familyID</td>
+        <td>babySitter name</td>
+        <td>startDate</td>
+        <td>endDate</td>
+        <td>startTime</td>
+        <td>endTime</td>
+        <td>status</td>
+    </tr>
+
+    <tr th:each= "object :${family}">
+        <td><span th:text = "${object.id}"></span></td>
+        <td><span th:text = "${object.name}"></span></td>
+        <td><span th:text = "${object.address}"></span></td>
+        <td><span th:text = "${object.phone}"></span></td>
+        <td></td>
+    </tr>
+
+    <tr th:each="contractsList : ${allContracts}">
+        <td><span th:text="${contractsList.contractID}"></span></td>
+        <td><span th:text="${contractsList.familyID}"></span></td>
+        <td><span th:text="${contractsList.babysitterName}"></span></td>
+        <td><span th:text="${contractsList.startDate}"></span></td>
+        <td><span th:text="${contractsList.endDate}"></span></td>
+        <td><span th:text="${contractsList.startTime}"></span></td>
+        <td><span th:text="${contractsList.endTime}"></span></td>
+        <td><span th:text="${contractsList.status}"></span></td>
+    </tr>
+
+
+</table>
+
 <form action="/contract/detailOfRequestContract" method="POST">
     <button type="submit">Detail</button>
 </form>

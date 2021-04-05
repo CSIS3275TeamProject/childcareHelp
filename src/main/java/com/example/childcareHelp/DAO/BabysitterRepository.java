@@ -13,9 +13,8 @@ public interface BabysitterRepository extends MongoRepository<Babysitter, Intege
         return null;
     }
 
-    public default Optional<Babysitter> findById(Integer snn) {
-        return null;
-    }
+    @Query("{'snn': ?0}")
+    Optional<Babysitter> findById(Integer snn);
 
     @Query("{'email': ?0, 'password':?1 }")
     Babysitter findByEmailAndPassword(String email, String password);
