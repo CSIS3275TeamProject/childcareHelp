@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -32,6 +33,12 @@ public class FamilyController {
     @RequestMapping("/register")
     public String inputFamilyInfo(Model model) {
         return "family/familyRegister";
+    }
+
+    @RequestMapping("/")
+    @ResponseBody
+    public List<Family> getAllFamily() {
+        return familyService.getAllFamily();
     }
 
     /*

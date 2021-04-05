@@ -27,5 +27,9 @@ public class FamilyDAO {
     public Family createFamily(Family family){
         return familyRepository.insert(family);
     }
+
+    public List<Family> getAllFamily() {
+        return familyRepository.findAll();
+    }
 }
 

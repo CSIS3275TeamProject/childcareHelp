@@ -71,12 +71,9 @@ public class BabysitterController {
     public String getBabysitter(@PathVariable Integer snn, Model model) {
         Optional<Babysitter> babysitter = babysitterService.getBabysitter(snn);
         babysitter.ifPresent(foundObject -> model.addAttribute("babysitter", foundObject));
-        //model.addAttribute("babysitter", babysitter);
         return "babysitter/detailOfBabysitter";
     }
 
-//     Optional<Update> update = <your code to get this in Java>
-// update.ifPresent(foundUpdateObject -> model.addAttribute("update", foundUpdateObject))
 
      @RequestMapping("/listOfBabysitterss/{snn}")
      @ResponseBody
@@ -85,11 +82,4 @@ public class BabysitterController {
      }
 
 
-    
-    // @RequestMapping("/detailOfBabysitter")
-    // public String getBabysitter(Babysitter babysitter, Model model) {
-    //     Optional<Babysitter> babysitterSelected = babysitterService.getBabysitter(babysitter.getSnn());
-    //     model.addAttribute("babysitter", babysitterSelected);
-    //     return "babysitter/detailOfBabysitter";
-    // }
 }

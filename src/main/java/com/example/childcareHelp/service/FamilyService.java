@@ -1,6 +1,7 @@
 package com.example.childcareHelp.service;
 
 import com.example.childcareHelp.DAO.FamilyDAO;
+import com.example.childcareHelp.controller.Collection;
 import com.example.childcareHelp.entity.Babysitter;
 import com.example.childcareHelp.entity.Family;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +32,10 @@ public class FamilyService {
 
     public Optional<Family> getFamily(Integer familyId) {
         return familyDAO.getFamilyById(familyId);
+    }
+
+
+    public List<Family> getAllFamily() {
+        return familyDAO.getAllFamily();
     }
 }

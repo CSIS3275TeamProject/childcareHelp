@@ -20,13 +20,13 @@
             <form action="/family/registerFamily" method="POST">
                 <h3>Register</h3>
                 <label for="">Parent's Name</label>
-                <input type="text" name="name" placeholder="Your name" value="sunghoan we" required>
+                <input type="text" name="name" placeholder="Your name" required>
                 <label for="">Email</label>
-                <input type="email" name="email" id="email" placeholder="Email" value="test@hotmail.com" required>
+                <input type="email" name="email" id="email" placeholder="Email" required>
                 <label for="">Address</label>
-                <input type="text" name="address" placeholder="Your address" value="444 fifth avenue">
+                <input type="text" name="address" placeholder="Your address">
                 <label for="">Phone Number</label>
-                <input type="text" name="phoneNumber" placeholder="Your number" value="778-222-1234">
+                <input type="text" name="phoneNumber" placeholder="Your number">
                 <label for="">Marital Status</label>
                 <select name="maritalStatus" id="maritalStatus">
                     <option value="single">single</option>
@@ -35,18 +35,18 @@
                 </select>
                 <div id="childrenInfo">
                     <label for="">Child's Name</label>
-                    <input type="text" name="children[0].name" placeholder="name of your child" value="child name">
+                    <input type="text" name="children[0].name" placeholder="name of your child">
                     <label for="">Child's Gender</label>
                     <select name="children[0].gender" id="gender">
                         <option value="boy">boy</option>
                         <option value="girl">girl</option>
                     </select>
                     <label for="">Date of Birth</label>
-                    <input type="date" value="2021-04-09" name="children[0].dateOfBirth">
+                    <input type="date" name="children[0].dateOfBirth">
                 </div>
                 <input type="button" value="Add" onclick="addChildInfo();">
                 <label for="">Password</label>
-                <input type="password" name="password" id="password" placeholder="Password" value="1234" required>
+                <input type="password" name="password" id="password" placeholder="Password"required>
                 <input type="submit" value="Register">
             </form> 
     </div>
