@@ -1,6 +1,7 @@
 package com.example.childcareHelp.DAO;
 
 import com.example.childcareHelp.entity.Babysitter;
+import com.example.childcareHelp.entity.Family;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -11,9 +12,8 @@ import java.util.Optional;
 
 public interface BabysitterRepository extends MongoRepository<Babysitter, Integer> {
 
-    public default Babysitter findByEmail(String email) {
-        return null;
-    }
+
+    public Babysitter findByEmail(String email);
 
     @Query("{'snn': ?0}")
     Optional<Babysitter> findById(Integer snn);

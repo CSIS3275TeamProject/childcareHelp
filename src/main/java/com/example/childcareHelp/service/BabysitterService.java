@@ -2,6 +2,7 @@ package com.example.childcareHelp.service;
 
 import com.example.childcareHelp.DAO.BabysitterDAO;
 import com.example.childcareHelp.entity.Babysitter;
+import com.example.childcareHelp.entity.Family;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,15 @@ BabysitterService {
 
     @Autowired
     private BabysitterDAO babysitterDAO;
+
+    public boolean checkExistedFamily(String email) {
+        Babysitter babysitter = babysitterDAO.getBabysitterByEmail(email);
+        if (babysitter == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
 
     public List<Babysitter> getAllBabysitters() {
         return babysitterDAO.getAllBabysitters();

@@ -15,6 +15,10 @@ public class BabysitterDAO {
     @Autowired
     private BabysitterRepository babysitterRepository;
 
+    public Babysitter getBabysitterByEmail(String email){
+        return babysitterRepository.findByEmail(email);
+    }
+
     public List<Babysitter> getAllBabysitters() {
         return babysitterRepository.findAll();
     }

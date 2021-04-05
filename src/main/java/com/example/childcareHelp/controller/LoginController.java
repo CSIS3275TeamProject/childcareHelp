@@ -45,7 +45,7 @@ public class LoginController {
 
             if(loginService.doLoginForFamily(loginInfo.getEmail(), loginInfo.getPassword()) != null) {
                 System.out.println("[LOG]_doLogin_Succeed_Family");
-                landingPage = "babysitter/listOfBabysitter";
+                //landingPage = "";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Family");
             }

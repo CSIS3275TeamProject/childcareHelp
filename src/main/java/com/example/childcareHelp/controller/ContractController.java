@@ -47,9 +47,8 @@ public class ContractController {
 
         contract.setContractID(sequenceGeneratorService.generateSequence(Contract.SEQUENCE_NAME));
 
-        Babysitter babysitter = babysitterService.getBabysitter(contract.getSnn()).orElse(new Babysitter());
-
-        contract.setBabysitterName(babysitter.getName());
+        Optional<Babysitter> babysitter = babysitterService.getBabysitter(contract.getSnn());
+        babysitter.ifPresent(foundObject->contract.setBabysitterName(foundObject.getName()));
 
         //add new contract to DB
         contractService.createContract(contract);
