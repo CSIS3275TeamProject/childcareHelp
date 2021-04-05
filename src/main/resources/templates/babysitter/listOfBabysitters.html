@@ -21,7 +21,7 @@
                 <ul class="main-nav">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Feature</a></li>
-                    <li><a href="/">Logout</a></li>
+                    <li><a th:href="@{/logout}">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -32,15 +32,17 @@
             <div class="row search-bar">
                 <h3>Filter Babysitters</h3>
                 <ul>
-                    <li><input type="text" placeholder="key word here"></li>
+                    <li><input id="key" type="text" placeholder="key word here"></li>
                     <li>
                         <select name="gender" id="gender">
+                            <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
                     </li>
                     <li>
                         <select name="degree" id="degree">
+                            <option value="">Select Degree</option>
                             <option value="highschool">high school</option>
                             <option value="college">College</option>
                             <option value="phd">PHD</option>
@@ -54,7 +56,9 @@
                             <option value="high">45~</option>
                         </select>
                     </li>
-                    <li><button>Reset</button></li>
+                    <li><button onclick="applyFilters()">Apply</button></li>
+                    <!-- <li><button onclick="resetFilters()">Reset</button></li> -->
+                    <li><a th:href="@{/babysitter/listOfBabysitters}" class="btn btn-full">Reset</a></li>
                 </ul>
             
             </div>
@@ -100,7 +104,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="./js/animation.js"></script>
+    <script src="./js/search.js"></script>
 
 </body>
 </html>
