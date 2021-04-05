@@ -21,7 +21,7 @@
                 <ul class="main-nav">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Feature</a></li>
-                    <li><a href="/">Logout</a></li>
+                    <li><a th:href="@{/logout}">Logout</a></li>
                 </ul>
             </div>
         </nav>
@@ -57,7 +57,8 @@
                         </select>
                     </li>
                     <li><button onclick="applyFilters()">Apply</button></li>
-                    <li><button onclick="resetFilters()">Reset</button></li>
+                    <!-- <li><button onclick="resetFilters()">Reset</button></li> -->
+                    <li><a th:href="@{/babysitter/listOfBabysitters}" class="btn btn-full">Reset</a></li>
                 </ul>
             
             </div>

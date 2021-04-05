@@ -43,7 +43,6 @@ public class ChildcareHelpApplication implements WebMvcConfigurer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ChildcareHelpApplication.class, args);
-		//test by hye kyung ko
 	}
 
 }
