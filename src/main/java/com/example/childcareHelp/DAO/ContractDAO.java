@@ -13,7 +13,7 @@ public class ContractDAO {
     @Autowired
     private ContractRepository contractRepository;
 
-    public Collection<Contract> getContractsByFamilyId(Integer familyId) {
+    public Collection<Contract> getContractsByFamilyId(long familyId) {
         return contractRepository.findAllByFamilyId(familyId);
     }
 

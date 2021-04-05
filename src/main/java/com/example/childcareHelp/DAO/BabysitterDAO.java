@@ -4,7 +4,9 @@ import com.example.childcareHelp.entity.Babysitter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -13,8 +15,7 @@ public class BabysitterDAO {
     @Autowired
     private BabysitterRepository babysitterRepository;
 
-    public Collection<Babysitter> getAllBabysitters() {
-
+    public List<Babysitter> getAllBabysitters() {
         return babysitterRepository.findAll();
     }
 
@@ -31,6 +32,7 @@ public class BabysitterDAO {
     }
 
     public Babysitter createBabysitter(Babysitter babysitter){
+        System.out.println("[LOG]_BabysitterDAO_createrBabysitter_");
         return babysitterRepository.insert(babysitter);
     }
 }

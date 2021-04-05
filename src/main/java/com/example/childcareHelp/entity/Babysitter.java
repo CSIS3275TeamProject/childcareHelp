@@ -1,17 +1,23 @@
 package com.example.childcareHelp.entity;
 
+import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
 
 @Document(collection ="Babysitter")
 public class Babysitter {
 
     @Id
     private Integer snn;
+    private String name;
+    private String password;
+    @DateTimeFormat(pattern="dd-MM-yyyy")
     private String dateOfBirth;
     private String gender;
     private String email;
-    private String heighestEducation;
+    private String highestEducation;
     private String phoneNumber;
 
     public Integer getSnn() {
@@ -46,12 +52,12 @@ public class Babysitter {
         this.email = email;
     }
 
-    public String getHeighestEducation() {
-        return heighestEducation;
+    public String getHighestEducation() {
+        return highestEducation;
     }
 
-    public void setHeighestEducation(String heighestEducation) {
-        this.heighestEducation = heighestEducation;
+    public void setHighestEducation(String heighestEducation) {
+        this.highestEducation = heighestEducation;
     }
 
     public String getPhoneNumber() {
@@ -60,5 +66,21 @@ public class Babysitter {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

@@ -14,7 +14,7 @@ public class ContractService {
     @Autowired
     private ContractDAO contractDAO;
 
-    public Collection<Contract> getAllContractsByFamilyId(Integer familyId) {
+    public Collection<Contract> getAllContractsByFamilyId(Long familyId) {
         return contractDAO.getContractsByFamilyId(familyId);
     }
     public Collection<Contract> getAllContractsByBabysitterId(Integer snn) {

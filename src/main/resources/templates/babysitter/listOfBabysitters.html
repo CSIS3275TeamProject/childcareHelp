@@ -28,102 +28,45 @@
     </header>
 
     <section class="listOfBabysitters" id="siiterList">
-        <div class="row">
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
+        <div class="list-container">
+            <div class="row search-bar">
+                <h3>Filter Babysitters</h3>
+                <ul>
+                    <li><input type="text" placeholder="key word here"></li>
+                    <li>
+                        <select name="gender" id="gender">
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="degree" id="degree">
+                            <option value="highschool">high school</option>
+                            <option value="college">College</option>
+                            <option value="phd">PHD</option>
+                        </select>
+                    </li>
+                    <li>
+                        <select name="age" id="age">
+                            <option value="">Select Age</option>
+                            <option value="low">~25</option>
+                            <option value="mid">26~45</option>
+                            <option value="high">45~</option>
+                        </select>
+                    </li>
+                    <li><button>Reset</button></li>
+                </ul>
+            
             </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
-            </div>
-            <div class="col span-1-of-3">
-                <div class="sitter-box">
-                    <i class="fas fa-user-circle"></i>
-                    <p>Daisuke Kawabuchi</p>
-                    <p>Male</p>
-                    <p>1999/11/07</p>
-                    <p>College Graduate</p>
-                    <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
-                </div>
+            <div class="sitter-list-container">
+                    <div class="sitter-box" th:each="babysitter : ${babysitters}">
+                        <i class="fas fa-user-circle"></i>
+                        <p th:text="${babysitter.name}"></p>
+                        <p th:text="${babysitter.gender}"></p>
+                        <p th:text="${babysitter.highestEducation}"></p>
+                        <a href="/babysitter/detailOfBabysitter" class="btn btn-full">See Detail</a>
+                    </div>
             </div>
         </div>
     </section>
