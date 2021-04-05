@@ -19,14 +19,6 @@
         <td>status</td>
     </tr>
 
-    <tr th:each= "object :${family}">
-        <td><span th:text = "${object.id}"></span></td>
-        <td><span th:text = "${object.name}"></span></td>
-        <td><span th:text = "${object.address}"></span></td>
-        <td><span th:text = "${object.phone}"></span></td>
-        <td></td>
-    </tr>
-
     <tr th:each="contractsList : ${allContracts}">
         <td><span th:text="${contractsList.contractID}"></span></td>
         <td><span th:text="${contractsList.familyID}"></span></td>

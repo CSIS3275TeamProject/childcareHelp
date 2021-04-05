@@ -51,8 +51,10 @@ public class ContractController {
 
         contract.setBabysitterName(babysitter.getName());
 
+        //add new contract to DB
         contractService.createContract(contract);
 
+        //return all contract list for current family to view.
         model.addAttribute("allContracts",contractService.getAllContractsByFamilyId(contract.getFamilyID()));
 
 
