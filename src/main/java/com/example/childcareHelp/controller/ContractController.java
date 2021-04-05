@@ -113,7 +113,7 @@ public class ContractController {
     /*
      * show the list of the accepted contracts by family (for babysitter)
      */
-    @RequestMapping("/listOfAccecptContracts")
+    @RequestMapping("/listOfAcceptContracts")
     public String getListContractByBabysitterId(@ModelAttribute("contract")  Contract contract, Model model) {
         model.addAttribute("contract", contractService.getAllContractsByBabysitterId(contract.getSnn()));
         return "contract/listOfAcceptContracts";
