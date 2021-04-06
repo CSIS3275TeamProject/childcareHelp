@@ -8,7 +8,7 @@
     <link rel="stylesheet" th:href="@{/css/normalize.css}">
     <link rel="stylesheet" th:href="@{/css/grid.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
-    <link rel="stylesheet" th:href="@{/css/list.css}">
+    <link rel="stylesheet" th:href="@{/css/listContract.css}">
     <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
     <script src="https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
     <title>list of Accept Contracts</title>
@@ -17,7 +17,6 @@
     <header>
         <nav>
             <div class="row">
-                <i class="fas fa-baby-carriage logo"></i>
                 <ul class="main-nav">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Feature</a></li>
@@ -26,7 +25,7 @@
             </div>
         </nav>
     </header>
-//
+
     <section class="listOfAcceptContract" id="Acceptedlist">
         <div class="list-container">
         <div class="row search-bar">
@@ -65,26 +64,22 @@
 
         </div>
 
-        <div class="contract-list-container">
-            <div class="contract-box">
-                <i class="fas fa-user-circle"></i>
+
 
         </div>
     </div>
-        <div class="sitter-list-container">
-            <div class="sitter-box" th:each="contract : ${contract}">
-                <i class="fas fa-user-circle"></i>
-                <p th:text="${contract.contractID}"></p>
-                <p th:text="${contract.startDate}"></p>
-                <p th:text="${contract.endDate}"></p>
-                <p th:text="${contract.startTime}"></p>
-                <p th:text="${contract.endTime}"></p>
-                <p th:text="${contract.status}"></p>
-                <p th:text="${contract.snn}"></p>
-                <p th:text="${contract.familyID}"></p>
-                <p th:text="${contract.babysitterName}"></p>
+        <div class="contract-list-container">
+        <div class="contract-box" th:each="contract : ${contract}">
+            <p th:text="${contract.contractID}">ContractID</p>
+            <p th:text="${contract.familyID}">FamilyID</p>
+            <p th:text="${contract.babysitterName}">Babysitter's name</p>
+            <p th:text="${contract.startDate}">Start Date</p>
+            <p th:text="${contract.endDate}">End Date</p>
+            <p th:text="${contract.startTime}">Start Time</p>
+            <p th:text="${contract.endTime}">End Time</p>
+            <p th:text="${contract.status}">Status</p>
 
-                <a th:href="@{/contract/listOfAcceptContracts.html/{id}(id=${contract.id})}" class="btn btn-full">See Detail</a>
+                <a th:href="@{/contract/listOfAcceptContracts.html/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>
 
             </div>
         </div>

@@ -2,10 +2,129 @@
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>List Of Request Contracts</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/listContract.css}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
+    <script src="https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
+    <title>list of Accept Contracts</title>
 </head>
 <body>
-<h1>List Of Request Contracts</h1>
+<header>
+    <nav>
+        <div class="row">
+            <ul class="main-nav">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Feature</a></li>
+                <li><a th:href="@{/logout}">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>
+<h3>List Of Request Contracts</h3>
+<section class="listOfRequestContract" id="Requestedlist">
+    <div class="list-container">
+        <div class="row search-bar">
+            <h3>Filter Contracts</h3>
+            <ul>
+                <li><input id="key" type="text" placeholder="id here"></li>
+                <li>
+                    <select name="year" id="year">
+                        <option value="">Select Year</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2020">2019</option>
+                        <option value="2020">2018</option>
+                        <option value="2020">2017</option>
+                    </select>
+                </li>
+                <li>
+                    <select name="month" id="month">
+                        <option value="">Select Month</option>
+                        <option value="Jan">Jan</option>
+                        <option value="Feb">Feb</option>
+                        <option value="Mar">Mar</option>
+                        <option value="Apr">Apr</option>
+                        <option value="May">May</option>
+                        <option value="Jun">Jun</option>
+                        <option value="Jul">Jul</option>
+                        <option value="Aug">Aug</option>
+                        <option value="Sep">Sep</option>
+                        <option value="Oct">Oct</option>
+                        <option value="Nov">Nov</option>
+                        <option value="Dec">Dec</option>
+                    </select>
+                </li>
+                <li><a th:href="@{/contract/listOfRequestContracts.html}" class="btn btn-full">Reset</a></li>
+            </ul>
+
+        </div>
+
+
+
+            </div>
+        </div>
+            <div class="contract-list-container">
+            <div class="contract-box"th:each="contract : ${contract}">
+                <p th:text="${contract.contractID}">ContractID</p>
+                <p th:text="${contract.familyID}">FamilyID</p>
+                <p th:text="${contract.babysitterName}">Babysitter's name</p>
+                <p th:text="${contract.startDate}">Start Date</p>
+                <p th:text="${contract.endDate}">End Date</p>
+                <p th:text="${contract.startTime}">Start Time</p>
+                <p th:text="${contract.endTime}">End Time</p>
+                <p th:text="${contract.status}">Status</p>
+
+
+                <a th:href="@{/contract/listOfAcceptContracts.html/{id}(id=${contract.id})}" class="btn btn-full">See Detail</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="row">
+        <div class="col span-1-of-2">
+            <ul class="footer-nav">
+                <li><a href="#">About us</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Press</a></li>
+                <li><a href="#">iOS App</a></li>
+                <li><a href="#">Android App</a></li>
+            </ul>
+        </div>
+        <div class="col span-1-of-2">
+            <ul class="social-links">
+                <li><a href="#"><img src="https://img.icons8.com/ios-filled/26/000000/facebook-new.png" alt="icon"/></a></li>
+                <li><a href="#"><img src="https://img.icons8.com/fluent-systems-regular/26/000000/twitter.png" alt="icon"/></i></a></li>
+                <li><a href="#"><img src="https://img.icons8.com/metro/26/000000/google-plus.png" alt="icon"/></i></a></li>
+                <li><a href="#"><img src="https://img.icons8.com/metro/26/000000/instagram-new.png" alt="icon"/></i></a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <p>
+            Copyright &copy; 2021 by Babysitting App All rights reserved.
+        </p>
+    </div>
+</footer>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="./js/search.js"></script>
+
+<form action="/contract/detailOfAcceptContract" method="POST">
+    <button type="submit">Detail</button>
+</form>
+</body>
+
+
+
+
 
 <table>
     <tr>
