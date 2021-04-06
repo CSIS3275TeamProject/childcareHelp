@@ -24,7 +24,7 @@
             <p th:text="${babysitter.dateOfBirth}"></p>
             <p th:text="${babysitter.phoneNumber}"></p>
             <p th:text="${babysitter.highestEducation}"></p>
-            <a href="#" class="btn btn-full">Request</a>
+            <a th:href="@{/contract/register/{id}(id=${babysitter.snn})}" class="btn btn-full">Request</a>
         </div>
     </div>
 
