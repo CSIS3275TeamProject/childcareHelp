@@ -59,7 +59,7 @@ public class ContractController {
         contract.setFamilyID(userInfoDto.getId());
         contract.setStatus("REQUESTED");
         contractService.createContract(contract);
-        return "redirect:contract/listOfRequestContracts";
+        return "redirect:/contract/listOfRequestContracts";
     }
 
 
