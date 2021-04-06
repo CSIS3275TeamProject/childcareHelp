@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class Babysitter {
 
     @Id
-    private Integer snn;
+    private long snn;
     private String name;
     private String password;
     @DateTimeFormat(pattern="dd-MM-yyyy")
@@ -20,11 +20,11 @@ public class Babysitter {
     private String highestEducation;
     private String phoneNumber;
 
-    public Integer getSnn() {
+    public long getSnn() {
         return snn;
     }
 
-    public void setSnn(Integer snn) {
+    public void setSnn(long snn) {
         this.snn = snn;
     }
 

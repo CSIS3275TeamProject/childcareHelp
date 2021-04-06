@@ -5,12 +5,17 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
 import java.util.Collection;
+import java.util.List;
 
 
 public interface ContractRepository extends MongoRepository<Contract, Integer> {
 
     @Query("{'familyID': ?0}")
-    Collection<Contract> findAllByFamilyId(long familyId);
+    List<Contract> findAllByFamilyId(long familyId);
+
+    @Query("{'familyID': ?0},{'status': ?1},{'startDate': {$gt : ?2}},{'endDate': {$lt : ?2}}")
+    List<Contract> findAllByCondition(long familyId, String status, String yyyyMM);
+
 
     @Query("{'snn': ?0}")
     Collection<Contract> findAllByBabysitterId(long snn);

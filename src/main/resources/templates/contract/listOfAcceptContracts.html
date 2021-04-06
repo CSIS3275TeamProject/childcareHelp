@@ -69,10 +69,10 @@
         </div>
     </div>
         <div class="contract-list-container">
-        <div class="contract-box" th:each="contract : ${contract}">
+        <div class="contract-box" th:each="contract : ${contractList}">
             <p th:text="${contract.contractID}">ContractID</p>
             <p th:text="${contract.familyID}">FamilyID</p>
-            <p th:text="${contract.babysitterName}">Babysitter's name</p>
+            <p th:text="${contract.babysitter.name}">Babysitter's name</p>-->
             <p th:text="${contract.startDate}">Start Date</p>
             <p th:text="${contract.endDate}">End Date</p>
             <p th:text="${contract.startTime}">Start Time</p>
