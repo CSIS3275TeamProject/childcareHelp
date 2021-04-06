@@ -17,7 +17,7 @@ public class ContractService {
     public Collection<Contract> getAllContractsByFamilyId(Long familyId) {
         return contractDAO.getContractsByFamilyId(familyId);
     }
-    public Collection<Contract> getAllContractsByBabysitterId(Integer snn) {
+    public Collection<Contract> getAllContractsByBabysitterId(long snn) {
         return contractDAO.getContractsByBabysitterId(snn);
     }
 
