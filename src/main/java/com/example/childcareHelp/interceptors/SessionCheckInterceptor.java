@@ -22,11 +22,14 @@ public class SessionCheckInterceptor implements HandlerInterceptor{
 
         // Check Session
         HttpSession session = request.getSession();
-        LoginInfo loginInfo = (LoginInfo)session.getAttribute("account");
+        LoginInfo loginInfo = (LoginInfo)session.getAttribute("USER_INFO");
+        System.out.println("[LOG]_loginInfo:" + loginInfo + "__");
+
         if(loginInfo == null){
             response.sendRedirect("/login");
             return false;
         }
+        System.out.println("[LOG]_loginInfo:" + loginInfo.getEmail() + "__" + loginInfo.getPassword());
         return true;
     }
 

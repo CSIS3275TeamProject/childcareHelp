@@ -2,6 +2,7 @@ package com.example.childcareHelp.controller;
 
 import com.example.childcareHelp.entity.Babysitter;
 import com.example.childcareHelp.entity.Child;
+import com.example.childcareHelp.entity.Contract;
 import com.example.childcareHelp.entity.Family;
 import com.example.childcareHelp.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.util.List;
 
 @Controller
 public class LoginController {
@@ -25,8 +27,8 @@ public class LoginController {
      * execute Login
      */
     @RequestMapping("login")
-    //public String doLogin(ModelAndView model, HttpServletRequest req) {
-    public String doLogin(@ModelAttribute("loginInfo") LoginInfo loginInfo, Model model, HttpServletRequest req) {
+    public String doLogin(@ModelAttribute("loginInfo") LoginInfo loginInfo,
+                          Model model, HttpServletRequest req) {
 
         System.out.println("[LOG]_doLogin_userType="+loginInfo.getUserType());
         //test 2
@@ -37,6 +39,8 @@ public class LoginController {
         if(loginInfo.getUserType() == 1){ //babysitter
             if(loginService.doLoginForBabysitter(loginInfo.getEmail(), loginInfo.getPassword()) != null) {
                 System.out.println("[LOG]_doLogin_Succeed_Babysitter");
+
+                session.setAttribute("USER_INFO", loginInfo);
                 landingPage = "contract/listOfAcceptContracts";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Babysitter");
@@ -45,6 +49,7 @@ public class LoginController {
 
             if(loginService.doLoginForFamily(loginInfo.getEmail(), loginInfo.getPassword()) != null) {
                 System.out.println("[LOG]_doLogin_Succeed_Family");
+                session.setAttribute("USER_INFO", loginInfo);
                 landingPage = "babysitter/listOfBabysitters";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Family");
