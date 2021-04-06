@@ -56,8 +56,7 @@
                             <option value="high">45~</option>
                         </select>
                     </li>
-                    <li><button onclick="applyFilters()">Apply</button></li>
-                    <!-- <li><button onclick="resetFilters()">Reset</button></li> -->
+                    <li><a href="#" class="btn btn-ghost" id="btn-apply" onclick="applyFilters()">Apply</a></li>
                     <li><a th:href="@{/babysitter/listOfBabysitters}" class="btn btn-full">Reset</a></li>
                 </ul>
             
@@ -104,7 +103,7 @@
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="./js/search.js"></script>
+    <script type="text/javascript" th:src="@{/js/search.js}"></script>
 
 </body>
 </html>

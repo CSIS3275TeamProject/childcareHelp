@@ -75,11 +75,18 @@ public class BabysitterController {
     }
 
 
-     @RequestMapping("/listOfBabysitterss/{snn}")
-     @ResponseBody
-     public Optional<Babysitter> getBabysitter(@PathVariable Integer snn) {
+    @RequestMapping("/listOfBabysitterss/{snn}")
+    @ResponseBody
+    public Optional<Babysitter> getBabysitter(@PathVariable Integer snn) {
          return babysitterService.getBabysitter(snn);
-     }
+    }
+
+    @RequestMapping("/listOfBabysitters/{input}/{gender}/{degree}/{age}")
+    public String getBabysittersByCondition(@PathVariable("input") String input, @PathVariable("gender") String gender, @PathVariable("degree") String degree, @PathVariable("age") String age, Model model) {
+        List<Babysitter> babysitters = babysitterService.getBabysittersByCondition(input, gender, degree, age);
+        model.addAttribute("babysitters", babysitters);
+        return "babysitter/listOfBabysitters";
+    }
 
 
 }
