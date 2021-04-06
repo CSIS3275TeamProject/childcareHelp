@@ -39,8 +39,8 @@ public class BabysitterController {
      * register the information of a babysitter
      */
     @PostMapping("/registerBabysitter")
-    public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,
-                                     @ModelAttribute("loginInfo") LoginInfoDto loginInfoDto, Model model) {
+    public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,Model model) {
+
         boolean result = babysitterService.checkExistedBabysitter(babysitter.getEmail());
         System.out.println("[LOG]_registerBabysitter_result="+result );
         if(!result) {
@@ -50,7 +50,7 @@ public class BabysitterController {
             model.addAttribute("ERROR_MESSAGE","The email you entered is already existed");
             return "/babysitter/babysitterRegister";
         }
-        return "/login";
+        return "redirect:/login";
     }
 
 
