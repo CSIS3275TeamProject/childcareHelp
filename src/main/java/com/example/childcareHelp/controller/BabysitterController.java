@@ -4,6 +4,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import com.example.childcareHelp.DTO.LoginInfoDto;
 import com.example.childcareHelp.entity.Babysitter;
 import com.example.childcareHelp.service.BabysitterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -40,8 +40,8 @@ public class BabysitterController {
      */
     @PostMapping("/registerBabysitter")
     public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,
-                                     @ModelAttribute("loginInfo") LoginInfo loginInfo,  Model model) {
-        boolean result = babysitterService.checkExistedFamily(babysitter.getEmail());
+                                     @ModelAttribute("loginInfo") LoginInfoDto loginInfoDto, Model model) {
+        boolean result = babysitterService.checkExistedBabysitter(babysitter.getEmail());
         System.out.println("[LOG]_registerBabysitter_result="+result );
         if(!result) {
             model.addAttribute("babysitter", babysitterService.createBabysitter(babysitter));

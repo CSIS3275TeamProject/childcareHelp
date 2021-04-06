@@ -16,7 +16,7 @@ BabysitterService {
     @Autowired
     private BabysitterDAO babysitterDAO;
 
-    public boolean checkExistedFamily(String email) {
+    public boolean checkExistedBabysitter(String email) {
         Babysitter babysitter = babysitterDAO.getBabysitterByEmail(email);
         if (babysitter == null) {
             return false;

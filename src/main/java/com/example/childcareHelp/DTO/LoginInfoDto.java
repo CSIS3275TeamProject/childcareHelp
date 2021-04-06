@@ -1,9 +1,9 @@
-package com.example.childcareHelp.controller;
+package com.example.childcareHelp.DTO;
 
 import org.springframework.stereotype.Component;
 
 @Component
-public class LoginInfo {
+public class LoginInfoDto {
     private String email;
     private String password;
     private int userType;
