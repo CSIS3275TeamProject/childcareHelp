@@ -72,9 +72,9 @@ public class LoginController {
      * execute Logout
      */
     @RequestMapping("logout")
-    public String doLogout() {
-
-        loginService.doLogout();
+    public String doLogout(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.invalidate();
         return "login";
     }
 

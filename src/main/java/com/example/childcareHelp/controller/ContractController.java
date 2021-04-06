@@ -20,8 +20,6 @@ public class ContractController {
     @Autowired
     private ContractService contractService;
     @Autowired
-    private ChildService childService;
-    @Autowired
     private FamilyService familyService;
     @Autowired
     private BabysitterService babysitterService;

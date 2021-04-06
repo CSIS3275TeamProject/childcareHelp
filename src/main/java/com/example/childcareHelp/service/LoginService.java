@@ -26,10 +26,4 @@ public class LoginService {
         return babysitterDAO.getBabysitter(email, password);
     }
 
-    public boolean doLogout() {
-
-        // remove session information
-        return true;
-    }
-
 }
