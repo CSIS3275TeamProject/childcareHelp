@@ -13,7 +13,7 @@ public interface ContractRepository extends MongoRepository<Contract, Integer> {
     Collection<Contract> findAllByFamilyId(long familyId);
 
     @Query("{'snn': ?0}")
-    Collection<Contract> findAllByBabysitterId(Integer snn);
+    Collection<Contract> findAllByBabysitterId(long snn);
 
     @Query("{'familyID': ?0, 'snn': ?1}")
     Collection<Contract> findAllByFamilyIdNBabysitterId(long familyId, Integer snn);

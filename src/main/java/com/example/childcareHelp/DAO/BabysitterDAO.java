@@ -28,7 +28,7 @@ public class BabysitterDAO {
         return babysitterRepository.findBabysitterByCondition(babysitter);
     }
 
-    public Optional<Babysitter> getBabysitterBySnn(Integer snn) {
+    public Optional<Babysitter> getBabysitterBySnn(long snn) {
         return babysitterRepository.findById(snn);
     }
     public Babysitter getBabysitter(String email, String password) {

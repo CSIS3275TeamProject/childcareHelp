@@ -24,7 +24,7 @@ public class Contract {
     private String endTime;
     @Value("${some.key:pending}")
     private String status;
-    private Integer snn;
+    private long snn;
     private long familyID;
     private String babysitterName;
 
@@ -77,11 +77,11 @@ public class Contract {
         this.status = status;
     }
 
-    public Integer getSnn() {
+    public long getSnn() {
         return snn;
     }
 
-    public void setSnn(Integer snn) {
+    public void setSnn(long snn) {
         this.snn = snn;
     }
 
