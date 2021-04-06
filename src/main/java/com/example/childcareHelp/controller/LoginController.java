@@ -25,7 +25,6 @@ public class LoginController {
      * execute Login
      */
     @RequestMapping("login")
-    //public String doLogin(ModelAndView model, HttpServletRequest req) {
     public String doLogin(@ModelAttribute("loginInfo") LoginInfoDto loginInfoDto, Model model, HttpServletRequest req) {
 
         System.out.println("[LOG]_doLogin_userType="+ loginInfoDto.getUserType());
