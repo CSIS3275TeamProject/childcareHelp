@@ -35,12 +35,6 @@ public class FamilyController {
         return "family/familyRegister";
     }
 
-    @RequestMapping("/")
-    @ResponseBody
-    public List<Family> getAllFamily() {
-        return familyService.getAllFamily();
-    }
-
     /*
      * register the information of family
      */
@@ -50,14 +44,14 @@ public class FamilyController {
         if (!result) {
             long newFamilyId = sequenceGeneratorService.generateSequence(Family.SEQUENCE_NAME);
             family.setFamilyID(newFamilyId);
-            List<Child> children = family.getChildren();
+//            List<Child> children = family.getChildren();
+//            for (int i = 0; i < children.size(); i++) {
+//                Child child = children.get(i);
+//                child.setChildID(sequenceGeneratorService.generateSequence(Child.SEQUENCE_NAME));
+//                child.setFamilyID(newFamilyId);
+//                Child resultChild = childService.createChild(child);
+//            }
             Family resultFamily = familyService.createFamily(family);
-            for (int i = 0; i < children.size(); i++) {
-                Child child = children.get(i);
-                child.setChildID(sequenceGeneratorService.generateSequence(Child.SEQUENCE_NAME));
-                child.setFamilyID(newFamilyId);
-                Child resultChild = childService.createChild(child);
-            }
         } else {
             model.addAttribute("ERROR_MESSAGE","The email you entered is already existed");
             return "family/familyRegister";

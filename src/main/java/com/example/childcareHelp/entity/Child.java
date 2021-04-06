@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection ="Child")
 public class Child {
 
-    @Transient
-    public static final String SEQUENCE_NAME = "child_sequence";
+//    @Transient
+//    public static final String SEQUENCE_NAME = "child_sequence";
 
     @Id
     private long childID;

@@ -4,7 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import com.example.childcareHelp.controller.LoginInfo;
+import com.example.childcareHelp.DTO.LoginInfoDto;
+import com.example.childcareHelp.DTO.UserInfoDto;
 import org.springframework.stereotype.Component;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -22,8 +23,8 @@ public class SessionCheckInterceptor implements HandlerInterceptor{
 
         // Check Session
         HttpSession session = request.getSession();
-        LoginInfo loginInfo = (LoginInfo)session.getAttribute("account");
-        if(loginInfo == null){
+        UserInfoDto userInfoDto = (UserInfoDto)session.getAttribute("USER_INFO");
+        if(userInfoDto == null){
             response.sendRedirect("/login");
             return false;
         }
