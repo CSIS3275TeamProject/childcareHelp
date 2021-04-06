@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+
 @Controller
 public class LoginController {
 
@@ -42,7 +43,8 @@ public class LoginController {
                 userInfoDto.setUserType(1);
                 session.setAttribute("USER_INFO", userInfoDto);
                 System.out.println("[LOG]_doLogin_Succeed_Babysitter");
-                landingPage = "redirect:contract/listOfAcceptContracts";
+
+                landingPage = "contract/listOfAcceptContracts";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Babysitter");
             }
@@ -55,7 +57,7 @@ public class LoginController {
                 userInfoDto.setUserType(0);
                 session.setAttribute("USER_INFO", userInfoDto);
                 System.out.println("[LOG]_doLogin_Succeed_Family");
-                landingPage = "redirect:babysitter/listOfBabysitters";
+                landingPage = "babysitter/listOfBabysitters";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Family");
             }

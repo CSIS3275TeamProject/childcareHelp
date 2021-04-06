@@ -28,6 +28,7 @@ public class SessionCheckInterceptor implements HandlerInterceptor{
             response.sendRedirect("/login");
             return false;
         }
+
         return true;
     }
 
