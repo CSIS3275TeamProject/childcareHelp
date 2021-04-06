@@ -39,5 +39,9 @@ public class BabysitterDAO {
         System.out.println("[LOG]_BabysitterDAO_createrBabysitter_");
         return babysitterRepository.insert(babysitter);
     }
+
+    public List<Babysitter> getBabysittersByCondition(String input, String gender, String degree, String age) {
+        return babysitterRepository.findByCondition(input, gender, degree, age);
+    }
 }
 

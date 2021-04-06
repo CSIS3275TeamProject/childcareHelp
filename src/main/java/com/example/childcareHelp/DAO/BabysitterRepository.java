@@ -25,4 +25,7 @@ public interface BabysitterRepository extends MongoRepository<Babysitter, Intege
         return null;
     }
 
+    @Query("{'name': ?0, 'gender': ?1, 'highestEducation': ?2}")
+    public List<Babysitter> findByCondition(String input, String gender, String degree, String age);
+
 }

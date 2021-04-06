@@ -3,8 +3,10 @@ const applyFilters = () => {
     let gender = document.getElementById("gender").value;
     let degree = document.getElementById("degree").value;
     let age = document.getElementById("age").value;
-
-    console.log(inputText, gender, degree, age);
+    let uri = `/babysitter/listOfBabysitters/${inputText}/${gender}/${degree}/${age}`;
+    let encorded = encodeURI(uri);
+    document.getElementById("btn-apply").href=encorded;
+    return false;
 }
 
 
