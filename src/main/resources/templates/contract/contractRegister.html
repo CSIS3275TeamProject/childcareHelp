@@ -9,7 +9,7 @@
     <link rel="stylesheet" th:href="@{/css/grid.css}">
     <link rel="stylesheet" th:href="@{/css/main.css}">
     <link rel="stylesheet" th:href="@{/css/login.css}">
-    <link rel="stylesheet" th:href="@{/css/register.css}">
+    <link rel="stylesheet" th:href="@{/css/registerForm.css}">
     <!-- <link rel="stylesheet" th:href="@{/css/detailContract.css}"> -->
     <link href = 'https://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel="stylesheet" type="'text/css">
     <script src = "https://kit.fontawesome.com/e15797aa75.js" crossorigin="anonymous"></script>
@@ -20,10 +20,10 @@
     <div class="row">
         <form th:object="${contract}" th:action="@{/contract/registerContract}" action="#" method="POST">
             <h3>Request a contract</h3>
-            <label for="">family ID</label>
-            <input th:field="*{familyID}" type="text" placeholder="family ID" value="${family.familyID}" disabled>
-            <label for="">Babysitter SNN</label>
-            <input th:field="*{snn}" type="text" placeholder="babysitter snn" value="${babysitter.snn}" disabled>
+            <label class="familyID" for="">family ID</label>
+            <input class="familyID" th:field="*{familyID}" type="text" placeholder="family ID" value="${family.familyID}">
+            <label class="snn" for="">Babysitter SNN</label>
+            <input class="snn" th:field="*{snn}" type="text" placeholder="babysitter snn" value="${babysitter.snn}">
             <label for="">Start Date</label>
             <input  th:field="*{startDate}" type="date">
             <label for="">End Date</label>
