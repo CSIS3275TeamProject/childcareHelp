@@ -38,6 +38,7 @@
                         <option th:value="REQUESTED">REQUESTED</option>
                         <option th:value="ACCEPTED">ACCEPTED</option>
                         <option th:value="DENIED">DENIED</option>
+                        <option th:value="CANCELED">CANCELED</option>
                     </select>
                 </li>
                 <li>
@@ -67,7 +68,8 @@
                         <option th:value="12">Dec</option>
                     </select>
                 </li>
-                <li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>
+                <li><button tyep="submit">Search</button></li></li>
+                <!--<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>-->
                 <!--<li><button onclick="resetRequestContractCondition()">Reset</button></li>-->
                 <!--//<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>
                 <li><a th:href="@{/contract/listOfRequestContracts.html}" class="btn btn-full">Reset</a></li>-->
@@ -84,7 +86,7 @@
                 <p th:text="${contract.endDate}">End Date</p>
                 <p th:text="${contract.endTime}">End Time</p>
                 <p th:text="${contract.status}">Status</p>
-                <a th:href="@{/contract/listOfAcceptContracts.html/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>
+                <a th:href="@{/contract/detailOfRequestContract/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>
             </div>
         </div>
     </div>

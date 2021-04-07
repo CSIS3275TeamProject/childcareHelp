@@ -18,6 +18,11 @@ public class ContractDAO {
         return contractRepository.findAllByFamilyId(familyId);
     }
 
+
+    public Contract getContractsByContractId(long contractId) {
+        return contractRepository.findContractByContractID(contractId);
+    }
+
     public List<Contract> getContractsByCondition(long familyId, String status, String yyyyMM) {
         return contractRepository.findAllByCondition(familyId, status, yyyyMM);
     }
@@ -35,8 +40,9 @@ public class ContractDAO {
         return contractRepository.insert(contract);
     }
 
-    public Contract updateContract(Contract contract){
-        return contractRepository.save(contract);
+
+    public Contract updateContract(long contractId, String status) {
+        return contractRepository.updateContract(contractId, status);
     }
 
 }

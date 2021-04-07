@@ -23,16 +23,13 @@ public class ContractService {
     @Autowired
     private BabysitterDAO babysitterDAO;
 
-//    public List<Contract> getAllContractsByFamilyId(Long familyId) {
-//        List<Contract> contractList = contractDAO.getContractsByFamilyId(familyId);
-//        for(int i=0; i < contractList.size(); i++) {
-//            Contract contract = contractList.get(i);
-//            contractList.get(i).setFamily(familyDAO.getFamilyByFamilyId(contractList.get(i).getFamilyID()));
-//            Optional<Babysitter> babysitter = babysitterDAO.getBabysitterBySnn(contractList.get(i).getSnn());
-//            babysitter.ifPresent(foundObject -> contract.setBabysitter(foundObject));
-//        }
-//        return contractList;
-//    }
+    public Contract getContractsByContractId(long contrcatId) {
+        Contract contract = contractDAO.getContractsByContractId(contrcatId);
+        contract.setFamily(familyDAO.getFamilyByFamilyId(contract.getFamilyID()));
+        Optional<Babysitter> babysitter = babysitterDAO.getBabysitterBySnn(contract.getSnn());
+        babysitter.ifPresent(foundObject -> contract.setBabysitter(foundObject));
+        return contract;
+    }
 
     public List<Contract> getAllContractsByCondition(long familyId, String status, String yyyyMM) {
         List<Contract> contractList = contractDAO.getContractsByCondition(familyId, status, yyyyMM);
@@ -57,8 +54,7 @@ public class ContractService {
         return contractDAO.createContract(contract);
     }
 
-    public Contract updateContract(Contract contract) {
-        return contractDAO.updateContract(contract);
+    public Contract updateContract(long contractId, String status) {
+        return contractDAO.updateContract(contractId, status);
     }
-
 }

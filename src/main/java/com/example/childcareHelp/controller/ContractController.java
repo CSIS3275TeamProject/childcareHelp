@@ -8,10 +8,7 @@ import com.example.childcareHelp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -70,10 +67,12 @@ public class ContractController {
     /*
      * show the detail information of a contract selected
      */
-    @RequestMapping("/detailOfRequestContract")
-    public String getRequestContract(@ModelAttribute("contract")  Contract contract, Model model) {
-//        model.addAttribute(babysitterService.getBabysitter(contract.getSnn()));
-//        model.addAttribute(contractService.getContract(contract.getContractID()));
+    @RequestMapping("/detailOfRequestContract/{contractId}")
+    public String getRequestContract(@PathVariable long contractId, Model model) {
+        System.out.println("aaaa"+contractId);
+        //return all contract list for current family to view.
+        Contract contract = contractService.getContractsByContractId(contractId);
+        model.addAttribute("contract",contract);
         return "contract/detailOfRequestContract";
     }
 
@@ -90,10 +89,10 @@ public class ContractController {
     /*
      * cancel the status of a contract requested
      */
-    @RequestMapping("/cancelContract")
-    public String cancelContract(@ModelAttribute("contract")  Contract contract, Model model) {
-//        model.addAttribute(contractService.updateContract(contract));
-        return "contract/listOfRequestContracts";
+    @RequestMapping("/cancelContract/{contractId}")
+    public String cancelContract(@PathVariable long contractId, Model model) {
+        contractService.updateContract(contractId, "CANCELED");
+        return "redirect:/contract/listOfRequestContracts";
     }
 
     /*
@@ -104,13 +103,12 @@ public class ContractController {
         System.out.println("status : "+contractConditionDto.getStatus());
         System.out.println("month : "+contractConditionDto.getMonth());
         System.out.println("year : "+contractConditionDto.getYear());
-        String tempDate = "";
-        contractConditionDto.setStatus("REQUESTED");
+        String tempDate = null;
         if (contractConditionDto.getYear() != null && !contractConditionDto.getYear().isEmpty()) {
             if (contractConditionDto.getMonth() != null && !contractConditionDto.getMonth().isEmpty()){
-                tempDate = contractConditionDto.getYear() + "-" + contractConditionDto.getMonth();
+                tempDate = contractConditionDto.getYear() + "-" + contractConditionDto.getMonth()+"-"+"01";
             } else {
-                tempDate = contractConditionDto.getYear();
+                tempDate = contractConditionDto.getYear() + "-12-31";
             }
         }
         UserInfoDto userInfoDto = (UserInfoDto)req.getSession().getAttribute("USER_INFO");

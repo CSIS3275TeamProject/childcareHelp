@@ -13,9 +13,16 @@ public interface ContractRepository extends MongoRepository<Contract, Integer> {
     @Query("{'familyID': ?0}")
     List<Contract> findAllByFamilyId(long familyId);
 
-    @Query("{'familyID': ?0},{'status': ?1},{'startDate': {$gt : ?2}},{'endDate': {$lt : ?2}}")
-    List<Contract> findAllByCondition(long familyId, String status, String yyyyMM);
+//    @Query("{'contractId': ?0}")
+    Contract findContractByContractID(long contractId);
 
+    @Query("{'contractId': ?0}, {$set : {status : $1}}")
+    Contract updateContract(long contractId, String status);
+
+
+    //    @Query("{'$and' : [{'familyID': ?0},{'status': ?1},{'startDate': {$gt : ?2}},{'endDate': {$lt : ?2}}]}")
+    @Query("{'$or' : [{'familyID': ?0},{'status': ?1}]}")
+    List<Contract> findAllByCondition(long familyId, String status, String yyyyMM);
 
     @Query("{'snn': ?0}")
     Collection<Contract> findAllByBabysitterId(long snn);
