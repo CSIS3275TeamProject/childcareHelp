@@ -39,5 +39,19 @@ public class BabysitterDAO {
         System.out.println("[LOG]_BabysitterDAO_createrBabysitter_");
         return babysitterRepository.insert(babysitter);
     }
+
+    public List<Babysitter> getBabysittersByCondition(String input, String gender, String degree) {
+        List<Babysitter> babysitters;
+        if(gender.equals(degree)) {
+            babysitters = babysitterRepository.findByCondition(input);
+        } else if(degree.equals("0")) {
+            babysitters = babysitterRepository.findByCondition(input, gender);
+        } else if(gender.equals("0")) {
+            babysitters = babysitterRepository.findByConditions(input, degree);
+        } else {
+            babysitters = babysitterRepository.findByCondition(input, gender, degree);
+        }
+        return babysitters;
+    }
 }
 

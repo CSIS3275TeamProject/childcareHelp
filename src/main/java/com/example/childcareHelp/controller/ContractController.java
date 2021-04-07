@@ -8,7 +8,10 @@ import com.example.childcareHelp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +28,8 @@ public class ContractController {
     private FamilyService familyService;
     @Autowired
     private BabysitterService babysitterService;
+    @Autowired
+    private LoginService loginService;
 
     @Autowired
     private SequenceGeneratorService sequenceGeneratorService;
@@ -32,9 +37,11 @@ public class ContractController {
     /*
      * move to input the information of a contract
      */
-    @GetMapping("/register")
-    public String inputContractInfo(@ModelAttribute("contract")  Contract contract, Model model) {
+    @GetMapping("/register/{snn}")
+    public String inputContractInfo(@PathVariable Integer snn, @ModelAttribute("contract")  Contract contract, Model model) {
         System.out.println("[LOG]_ContractController_registerContract_Start");
+        Optional<Babysitter> babysitter = babysitterService.getBabysitter(snn);
+        babysitter.ifPresent(foundObject -> model.addAttribute("babysitter", foundObject));
         return "contract/contractRegister";
     }
 
@@ -49,7 +56,7 @@ public class ContractController {
         contract.setFamilyID(userInfoDto.getId());
         contract.setStatus("REQUESTED");
         contractService.createContract(contract);
-        return "redirect:contract/listOfRequestContracts";
+        return "redirect:/contract/listOfRequestContracts";
     }
 
 

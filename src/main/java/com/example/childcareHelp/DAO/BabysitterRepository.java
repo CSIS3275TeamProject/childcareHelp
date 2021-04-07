@@ -25,4 +25,16 @@ public interface BabysitterRepository extends MongoRepository<Babysitter, Intege
         return null;
     }
 
+    @Query("{'name' : { $regex: ?0 }, 'gender': ?1, 'highestEducation': ?2}")
+    public List<Babysitter> findByCondition(String input, String gender, String degree);
+
+    @Query("{'name' : { $regex: ?0 }}")
+    public List<Babysitter> findByCondition(String input);
+
+    @Query("{'name' : { $regex: ?0 }, 'gender': ?1}")
+    public List<Babysitter> findByCondition(String input, String gender);
+
+    @Query("{'name' : { $regex: ?0 },'highestEducation': ?1}")
+    public List<Babysitter> findByConditions(String input, String degree);
+
 }

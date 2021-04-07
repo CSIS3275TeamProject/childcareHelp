@@ -13,6 +13,19 @@ header {
     margin: 0 auto;
 }
 
+.link-contract {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.link-contract a {
+    color: #000;
+}
+
+.link-contract a:hover {
+    color: rgb(233, 151, 145);
+}
+
 .search-bar {
     padding: 15px;
     width: 100%;

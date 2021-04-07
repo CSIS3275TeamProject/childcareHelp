@@ -37,4 +37,8 @@ BabysitterService {
         System.out.println("[LOG]_BabysitterService_createrBabysitter_");
         return babysitterDAO.createBabysitter(babysitter);
     }
+
+    public List<Babysitter> getBabysittersByCondition(String input, String gender, String degree) {
+        return babysitterDAO.getBabysittersByCondition(input, gender, degree);
+    }
 }
