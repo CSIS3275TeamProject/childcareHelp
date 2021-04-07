@@ -1,7 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/normalize.css}">
+    <link rel="stylesheet" th:href="@{/css/grid.css}">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/registerForm.css}">
+    <link href='http://fonts.googleapis.com/css?family=Lato:100,300,400,300italic' rel='stylesheet' type='text/css'>
     <title>Request New Contract</title>
 </head>
 <body>
@@ -10,10 +19,10 @@
     <div class="row">
         <form th:object="${contract}" th:action="@{/contract/registerContract}" action="#" method="POST">
             <h3>Register a contract</h3>
-            <label for="">family ID</label>
-            <input th:field="*{familyID}" type="text" placeholder="family ID" required>
-            <label for="">Babysitter SNN</label>
-            <input th:field="*{snn}" type="text" placeholder="babysitter snn" required>
+            <label class="familyID" for="">family ID</label>
+            <input class="familyID" th:field="*{familyID}" type="text" placeholder="family ID" required>
+            <label class="snn" for="">Babysitter SNN</label>
+            <input class="snn" th:field="*{snn}" type="text" placeholder="babysitter snn" required>
             <label for="">startDate</label>
             <input  th:field="*{startDate}" type="date">
             <label for="">endDate</label>
@@ -23,7 +32,7 @@
             <label for="">endTime</label>
             <input  th:field="*{endTime}" type="time">
 
-            <input type="submit" value="Register">
+            <input type="submit" value="Request">
         </form>
     </div>
 
