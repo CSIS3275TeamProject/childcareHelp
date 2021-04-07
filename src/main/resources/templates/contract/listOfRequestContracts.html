@@ -32,6 +32,7 @@
         <div class="row search-bar">
             <h3>Filter Contracts</h3>
             <ul>
+                <li><input th:field="*{contractTitle}" id="contractTitle" type="text" placeholder="Contract title here"></li>
                 <li>
                     <select th:field="*{status}" name="status" id="status">
                         <option value="">Select Status</option>
@@ -41,45 +42,15 @@
                         <option th:value="CANCELED">CANCELED</option>
                     </select>
                 </li>
-<!-- //                <li>
-                    <select th:field="*{year}" name="year" id="year">
-                        <option value="">Select Year</option>
-                        <option th:value="2021">2021</option>
-                        <option th:value="2020">2020</option>
-                        <option th:value="2019">2019</option>
-                        <option th:value="2018">2018</option>
-                        <option th:value="2017">2017</option>
-                    </select>
-                </li>
-                <li>
-                    <select th:field="*{month}" name="month" id="month">
-                        <option value="">Select Month</option>
-                        <option th:value="01">Jan</option>
-                        <option th:value="02">Feb</option>
-                        <option th:value="03">Mar</option>
-                        <option th:value="04">Apr</option>
-                        <option th:value="05">May</option>
-                        <option th:value="06">Jun</option>
-                        <option th:value="07">Jul</option>
-                        <option th:value="08">Aug</option>
-                        <option th:value="09">Sep</option>
-                        <option th:value="10">Oct</option>
-                        <option th:value="11">Nov</option>
-                        <option th:value="12">Dec</option>
-                    </select>
-                </li>
--->
+
                 <li><button tyep="submit">Search</button></li></li>
-                <!--<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>-->
-                <!--<li><button onclick="resetRequestContractCondition()">Reset</button></li>-->
-                <!--//<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>
-                <li><a th:href="@{/contract/listOfRequestContracts.html}" class="btn btn-full">Reset</a></li>-->
             </ul>
 
         </div>
         </form>
         <div class="contract-list-container">
             <div class="contract-box"th:each="contract : ${contractList}">
+                <p th:text="${contract.contractTitle}">Babysitter's name</p>
                 <p th:text="${contract.babysitter.name}">Babysitter's name</p>
                 <p th:text="${contract.status}">Status</p>
                 <a th:href="@{/contract/detailOfRequestContract/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>

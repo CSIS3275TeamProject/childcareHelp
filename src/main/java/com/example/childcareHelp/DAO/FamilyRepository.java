@@ -12,7 +12,5 @@ import java.util.List;
 public interface FamilyRepository extends MongoRepository<Family, Integer> {
     public Family findByFamilyID(long familyId);
     public Family findByEmail(String email);
-    public default List<Family> findFamilyByCondition(Family family) {
-        return null;
-    }
+
 }

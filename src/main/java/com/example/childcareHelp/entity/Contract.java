@@ -1,6 +1,5 @@
 package com.example.childcareHelp.entity;
 
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -14,6 +13,8 @@ public class Contract {
 
     @Id
     private long contractID;
+
+    private String contractTitle;
     @DateTimeFormat(pattern="dd-MM-yyyy")
     private String startDate;
     @DateTimeFormat(pattern="dd-MM-yyyy")
@@ -37,6 +38,15 @@ public class Contract {
 
     public void setContractID(long contractID) {
         this.contractID = contractID;
+    }
+
+
+    public String getContractTitle() {
+        return contractTitle;
+    }
+
+    public void setContractTitle(String contractTitle) {
+        this.contractTitle = contractTitle;
     }
 
     public String getStartDate() {

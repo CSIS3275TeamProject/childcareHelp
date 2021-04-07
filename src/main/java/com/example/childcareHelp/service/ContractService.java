@@ -3,6 +3,7 @@ package com.example.childcareHelp.service;
 import com.example.childcareHelp.DAO.BabysitterDAO;
 import com.example.childcareHelp.DAO.ContractDAO;
 import com.example.childcareHelp.DAO.FamilyDAO;
+import com.example.childcareHelp.DTO.ContractConditionDto;
 import com.example.childcareHelp.entity.Babysitter;
 import com.example.childcareHelp.entity.Contract;
 import com.example.childcareHelp.entity.Family;
@@ -31,8 +32,19 @@ public class ContractService {
         return contract;
     }
 
-    public List<Contract> getAllContractsByCondition(long familyId, String status, String yyyyMM) {
-        List<Contract> contractList = contractDAO.getContractsByCondition(familyId, status, yyyyMM);
+    public List<Contract> getAllContractsByConditionForFamily(long familyId, ContractConditionDto condition) {
+        List<Contract> contractList = null;
+        String contractTitle = condition.getContractTitle();
+        String status = condition.getStatus();
+        if (status != null && !status.isEmpty() && contractTitle != null && !contractTitle.isEmpty()) {
+            contractList = contractDAO.getContractsByConditionForFamily(familyId, contractTitle, status);
+        } else if (status != null && !status.isEmpty() && (contractTitle == null || contractTitle.isEmpty())) {
+            contractList = contractDAO.getContractsByStatusForFamily(familyId, status);
+        } else if ((status == null || status.isEmpty()) && contractTitle != null && !contractTitle.isEmpty()) {
+            contractList = contractDAO.getContractsByTitleForFamily(familyId, contractTitle);
+        } else {
+            contractList = contractDAO.getContractsByFamilyId(familyId);
+        }
         for(int i=0; i < contractList.size(); i++) {
             Contract contract = contractList.get(i);
             contractList.get(i).setFamily(familyDAO.getFamilyByFamilyId(contractList.get(i).getFamilyID()));
@@ -42,19 +54,36 @@ public class ContractService {
         return contractList;
     }
 
-    public Collection<Contract> getAllContractsByBabysitterId(long snn) {
-        return contractDAO.getContractsByBabysitterId(snn);
-    }
+    public List<Contract> getAllContractsByConditionForBabysitter(long snn, ContractConditionDto condition) {
+        List<Contract> contractList = null;
 
-    public Optional<Contract> getContract(Integer id) {
-        return contractDAO.getContract(id);
+        String contractTitle = condition.getContractTitle();
+        String status = condition.getStatus();
+        if (status != null && !status.isEmpty() && contractTitle != null && !contractTitle.isEmpty()) {
+            contractList = contractDAO.getContractsByConditionForBabysitter(snn, contractTitle, status);
+        } else if (status != null && !status.isEmpty() && (contractTitle == null || contractTitle.isEmpty())) {
+            contractList = contractDAO.getContractsByStatusForBabysitter(snn, status);
+        } else if ((status == null || status.isEmpty()) && contractTitle != null && !contractTitle.isEmpty()) {
+            contractList = contractDAO.getContractsByTitleForBabysitter(snn, contractTitle);
+        } else {
+            contractList = contractDAO.getContractsByBabysitterId(snn);
+        }
+
+
+        for(int i=0; i < contractList.size(); i++) {
+            Contract contract = contractList.get(i);
+            contractList.get(i).setFamily(familyDAO.getFamilyByFamilyId(contractList.get(i).getFamilyID()));
+            Optional<Babysitter> babysitter = babysitterDAO.getBabysitterBySnn(contractList.get(i).getSnn());
+            babysitter.ifPresent(foundObject -> contract.setBabysitter(foundObject));
+        }
+        return contractList;
     }
 
     public Contract createContract(Contract contract) {
         return contractDAO.createContract(contract);
     }
 
-    public Contract updateContract(long contractId, String status) {
-        return contractDAO.updateContract(contractId, status);
+    public Contract updateContractStatus(Contract contract) {
+        return contractDAO.updateContractStatus(contract);
     }
 }

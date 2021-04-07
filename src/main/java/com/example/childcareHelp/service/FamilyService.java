@@ -28,11 +28,6 @@ public class FamilyService {
         return familyDAO.createFamily(family);
     }
 
-//    public Optional<Family> getFamily(Integer familyId) {
-//        return familyDAO.getFamilyById(familyId);
-//    }
-
-
     public List<Family> getAllFamily() {
         return familyDAO.getAllFamily();
     }

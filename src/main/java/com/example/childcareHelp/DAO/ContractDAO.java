@@ -18,32 +18,44 @@ public class ContractDAO {
         return contractRepository.findAllByFamilyId(familyId);
     }
 
+    public List<Contract> getContractsByBabysitterId(long snn) {
+        return contractRepository.findAllByBabysitterId(snn);
+    }
 
     public Contract getContractsByContractId(long contractId) {
         return contractRepository.findContractByContractID(contractId);
     }
 
-    public List<Contract> getContractsByCondition(long familyId, String status, String yyyyMM) {
-        return contractRepository.findAllByCondition(familyId, status, yyyyMM);
+    public List<Contract> getContractsByConditionForFamily(long familyId, String contractTitle, String status) {
+        return contractRepository.findAllByConditionForFamily(familyId, contractTitle, status);
     }
 
-    public Collection<Contract> getContractsByBabysitterId(long snn) {
-        return contractRepository.findAllByBabysitterId(snn);
+    public List<Contract> getContractsByStatusForFamily(long familyId, String status) {
+        return contractRepository.findAllByStatusForFamily(familyId, status);
+    }
+    public List<Contract> getContractsByTitleForFamily(long familyId, String contractTitle) {
+        return contractRepository.findAllByTitleForFamily(familyId, contractTitle);
     }
 
-
-    public Optional<Contract> getContract(Integer id) {
-        return  contractRepository.findById(id);
+    public List<Contract> getContractsByConditionForBabysitter(long snn, String contractTitle, String status) {
+        return contractRepository.findAllByConditionForBabysitter(snn, contractTitle, status);
     }
+
+    public List<Contract> getContractsByStatusForBabysitter(long snn, String status) {
+        return contractRepository.findAllByStatusForBabysitter(snn, status);
+    }
+
+    public List<Contract> getContractsByTitleForBabysitter(long snn, String contractTitle) {
+        return contractRepository.findAllByTitleForBabysitter(snn, contractTitle);
+    }
+
 
     public Contract createContract(Contract contract){
         return contractRepository.insert(contract);
     }
 
-
-    public Contract updateContract(long contractId, String status) {
-        return contractRepository.updateContract(contractId, status);
+    public Contract updateContractStatus(Contract contract) {
+        return contractRepository.save(contract);
     }
-
 }
 

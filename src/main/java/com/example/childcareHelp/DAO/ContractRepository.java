@@ -1,6 +1,7 @@
 package com.example.childcareHelp.DAO;
 
 import com.example.childcareHelp.entity.Contract;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 
@@ -13,23 +14,28 @@ public interface ContractRepository extends MongoRepository<Contract, Integer> {
     @Query("{'familyID': ?0}")
     List<Contract> findAllByFamilyId(long familyId);
 
-//    @Query("{'contractId': ?0}")
     Contract findContractByContractID(long contractId);
 
-    @Query("{'contractId': ?0}, {$set : {status : $1}}")
-    Contract updateContract(long contractId, String status);
+    @Query("{'$and' : [{'familyID': ?0},{'contractTitle' : { $regex: ?1 }},{'status': ?2}]}")
+    List<Contract> findAllByConditionForFamily(long familyId, String contractTitle, String status);
 
+    @Query("{'$and' : [{'familyID': ?0},{'status': ?1}]}")
+    List<Contract> findAllByStatusForFamily(long familyId, String status);
 
-    //    @Query("{'$and' : [{'familyID': ?0},{'status': ?1},{'startDate': {$gt : ?2}},{'endDate': {$lt : ?2}}]}")
-    @Query("{'$or' : [{'familyID': ?0},{'status': ?1}]}")
-    List<Contract> findAllByCondition(long familyId, String status, String yyyyMM);
+    @Query("{'$and' : [{'familyID': ?0},{'contractTitle' : { $regex: ?1 }}]}")
+    List<Contract> findAllByTitleForFamily(long familyId, String contractTitle);
+
+    @Query("{'$and' : [{'snn': ?0},{'contractTitle' : { $regex: ?1 }},{'status': ?2}]}")
+    List<Contract> findAllByConditionForBabysitter(long snn, String contractTitle, String status);
+
+    @Query("{'$and' : [{'snn': ?0},{'status': ?1}]}")
+    List<Contract> findAllByStatusForBabysitter(long snn, String status);
+
+    @Query("{'$and' : [{'snn': ?0},{'contractTitle' : { $regex: ?1 }}]}")
+    List<Contract> findAllByTitleForBabysitter(long snn, String contractTitle);
+
 
     @Query("{'snn': ?0}")
-    Collection<Contract> findAllByBabysitterId(long snn);
+    List<Contract> findAllByBabysitterId(long snn);
 
-    @Query("{'familyID': ?0, 'snn': ?1}")
-    Collection<Contract> findAllByFamilyIdNBabysitterId(long familyId, Integer snn);
-
-    @Query("{'contractID': ?0}")
-    Contract findAllByContractId(long contractID);
 }

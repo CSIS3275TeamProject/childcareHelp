@@ -56,38 +56,24 @@ public class ContractController {
         return "redirect:/contract/listOfRequestContracts";
     }
 
-
     /*
-     * show the detail information of a contract selected
+     * show the detail information of a contract selected by babysitter
      */
-    @RequestMapping("/detailOfAcceptContract")
-    public String getAcceptContract(@ModelAttribute("contract")  Contract contract, Model model) {
-//        model.addAttribute(familyService.getFamily(contract.getFamilyID()));
-//        model.addAttribute(childService.getAllChildByFamilyId(contract.getFamilyID()));
-//        model.addAttribute(contractService.getContract(contract.getContractID()));
+    @RequestMapping("/detailOfAcceptContract/{contractId}")
+    public String getAcceptContract(@PathVariable long contractId, Model model) {
+        Contract contract = contractService.getContractsByContractId(contractId);
+        model.addAttribute("contract",contract);
         return "contract/detailOfAcceptContract";
     }
 
     /*
-     * show the detail information of a contract selected
+     * show the detail information of a contract selected by family
      */
     @RequestMapping("/detailOfRequestContract/{contractId}")
     public String getRequestContract(@PathVariable long contractId, Model model) {
-        System.out.println("aaaa"+contractId);
-        //return all contract list for current family to view.
         Contract contract = contractService.getContractsByContractId(contractId);
         model.addAttribute("contract",contract);
         return "contract/detailOfRequestContract";
-    }
-
-
-    /*
-     * update the status of a contract accepted
-     */
-    @RequestMapping("/updateContract")
-    public String updateContract(@ModelAttribute("contract") Contract contract, Model model) {
-//        model.addAttribute(contractService.updateContract(contract));
-        return "contract/listOfAcceptContracts";
     }
 
     /*
@@ -95,30 +81,42 @@ public class ContractController {
      */
     @RequestMapping("/cancelContract/{contractId}")
     public String cancelContract(@PathVariable long contractId, Model model) {
-        contractService.updateContract(contractId, "CANCELED");
+        Contract contract = contractService.getContractsByContractId(contractId);
+        contract.setStatus("CANCELED");
+        contractService.updateContractStatus(contract);
         return "redirect:/contract/listOfRequestContracts";
+    }
+
+    /*
+     * accept the status of a contract requested
+     */
+    @RequestMapping("/acceptContract/{contractId}")
+    public String acceptContract(@PathVariable long contractId, Model model) {
+        Contract contract = contractService.getContractsByContractId(contractId);
+        contract.setStatus("ACCEPTED");
+        contractService.updateContractStatus(contract);
+        return "redirect:/contract/listOfAcceptContracts";
+    }
+
+    /*
+     * deny the status of a contract requested
+     */
+    @RequestMapping("/denyContract/{contractId}")
+    public String denyContract(@PathVariable long contractId, Model model) {
+        Contract contract = contractService.getContractsByContractId(contractId);
+        contract.setStatus("ACCEPTED");
+        contractService.updateContractStatus(contract);
+        return "redirect:/contract/listOfAcceptContracts";
     }
 
     /*
      * show the list of the request contracts by oneself (for family)
      */
     @RequestMapping("/listOfRequestContracts")
-    public String getListContractByCondition(@ModelAttribute("requestContractsCondition") ContractConditionDto contractConditionDto, Model model, HttpServletRequest req) {
-        System.out.println("status : "+contractConditionDto.getStatus());
-        System.out.println("month : "+contractConditionDto.getMonth());
-        System.out.println("year : "+contractConditionDto.getYear());
-        String tempDate = null;
-        if (contractConditionDto.getYear() != null && !contractConditionDto.getYear().isEmpty()) {
-            if (contractConditionDto.getMonth() != null && !contractConditionDto.getMonth().isEmpty()){
-                tempDate = contractConditionDto.getYear() + "-" + contractConditionDto.getMonth()+"-"+"01";
-            } else {
-                tempDate = contractConditionDto.getYear() + "-12-31";
-            }
-        }
+    public String getListContractByConditionForFamily(@ModelAttribute("requestContractsCondition") ContractConditionDto contractConditionDto, Model model, HttpServletRequest req) {
         UserInfoDto userInfoDto = (UserInfoDto)req.getSession().getAttribute("USER_INFO");
-
         //return all contract list for current family to view.
-        List<Contract> contractList = contractService.getAllContractsByCondition(userInfoDto.getId(),contractConditionDto.getStatus(),tempDate);
+        List<Contract> contractList = contractService.getAllContractsByConditionForFamily(userInfoDto.getId(),contractConditionDto);
         model.addAttribute("contractList",contractList);
         return "contract/listOfRequestContracts";
     }
@@ -127,8 +125,11 @@ public class ContractController {
      * show the list of the accepted contracts by family (for babysitter)
      */
     @RequestMapping("/listOfAcceptContracts")
-    public String getListContractByBabysitterId(@ModelAttribute("contract")  Contract contract, Model model) {
-        model.addAttribute("contract", contractService.getAllContractsByBabysitterId(contract.getSnn()));
+    public String getListContractByConditionForBabysitter(@ModelAttribute("requestContractsCondition") ContractConditionDto contractConditionDto, Model model, HttpServletRequest req) {
+        UserInfoDto userInfoDto = (UserInfoDto)req.getSession().getAttribute("USER_INFO");
+        //return all contract list for current Babisitter to view.
+        List<Contract> contractList = contractService.getAllContractsByConditionForBabysitter(userInfoDto.getId(), contractConditionDto);
+        model.addAttribute("contractList",contractList);
         return "contract/listOfAcceptContracts";
     }
 

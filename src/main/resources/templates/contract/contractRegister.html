@@ -19,8 +19,8 @@
     <div class="row">
         <form th:object="${contract}" th:action="@{/contract/registerContract}" action="#" method="POST">
             <h3>Register a contract</h3>
-            <label class="familyID" for="">family ID</label>
-            <input class="familyID" th:field="*{familyID}" type="text" placeholder="family ID" required>
+            <label class="contractTitle" for="">Contract Title</label>
+            <input class="contractTitle" th:field="*{contractTitle}" type="text" placeholder="contract Title" required>
             <label class="snn" for="">Babysitter SNN</label>
             <input class="snn" th:field="*{snn}" type="text" placeholder="babysitter snn" required>
             <label for="">startDate</label>

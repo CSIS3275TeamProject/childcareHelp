@@ -20,11 +20,6 @@ public interface BabysitterRepository extends MongoRepository<Babysitter, Intege
     @Query("{'email': ?0, 'password':?1 }")
     Babysitter findByEmailAndPassword(String email, String password);
 
-
-    public default Collection<Babysitter> findBabysitterByCondition(Babysitter babysitter) {
-        return null;
-    }
-
     @Query("{'name' : { $regex: ?0 }, 'gender': ?1, 'highestEducation': ?2}")
     public List<Babysitter> findByCondition(String input, String gender, String degree);
 

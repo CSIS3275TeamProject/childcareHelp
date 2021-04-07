@@ -4,25 +4,8 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ContractConditionDto {
-    private String year;
-    private String month;
+    private String contractTitle;
     private String status;
-
-    public String getYear() {
-        return year;
-    }
-
-    public void setYear(String year) {
-        this.year = year;
-    }
-
-    public String getMonth() {
-        return month;
-    }
-
-    public void setMonth(String month) {
-        this.month = month;
-    }
 
     public String getStatus() {
         return status;
@@ -30,5 +13,13 @@ public class ContractConditionDto {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getContractTitle() {
+        return contractTitle;
+    }
+
+    public void setContractTitle(String contractTitle) {
+        this.contractTitle = contractTitle;
     }
 }

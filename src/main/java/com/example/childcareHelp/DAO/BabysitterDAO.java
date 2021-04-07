@@ -23,11 +23,6 @@ public class BabysitterDAO {
         return babysitterRepository.findAll();
     }
 
-
-    public Collection<Babysitter> getBabysitterByCondition(Babysitter babysitter) {
-        return babysitterRepository.findBabysitterByCondition(babysitter);
-    }
-
     public Optional<Babysitter> getBabysitterBySnn(long snn) {
         return babysitterRepository.findById(snn);
     }

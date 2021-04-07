@@ -17,19 +17,28 @@
     <h3>Detail of Accept Contract</h3>
     <div class = "row">
         <div class = "detail-box">
-            <p th:text="${contract.babysitter.name}">Babysitter Name:</p>
-            <p th:text="${contract.babysitter.gender}">Gender:</p>
-            <p th:text="${contract.babysitter.highestEducation}">Education Level: </p>
-            <p th:text="${contract.babysitter.dateOfBirth}">Date of Birth: </p>
+            <p th:text="${contract.family.name}">Family Name:</p>
+            <p th:text="${contract.family.address}">Address:</p>
+            <p th:text="${contract.family.phoneNumber}">PhoneNumber:</p>
+            <p th:text="${contract.family.email}">Email:</p>
+            <p th:text="${contract.family.maritalStatus}">Marital Status:</p>
+            <div th:each="child : ${contract.family.children}">
+                <p th:text="${child.name}">Child's name</p>
+                <p th:text="${child.dateOfBirth}">Child's date of birth</p>
+                <p th:text="${child.gender}">Child's Gender</p>
+            </div>
             <p th:text="${contract.startDate}">Start Date:</p>
+            <p th:text="${contract.startTime}">Start Time:</p>
+            <p th:text="${contract.endDate}">End Date:</p>
+            <p th:text="${contract.endTime}">End Time:</p>
+            <p th:text="${contract.status}">Status:</p>
             </br>
 
-        <div class="button-box">
-            <a class="btn btn-full" href="/contract/listOf">Accept</a>
-            </form>
-            <a class="btn btn-full" href="/contract/listOf">Deny</a>
-            </form>
-        </div>
+            <div class="button-box" th:switch="${contract.status}">
+                <a class="btn btn-full" href="/contract/listOfAcceptContracts">Back</a>
+                <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/acceptContract/{id}(id=${contract.contractID})}">ACCEPT</a>
+                <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/denyContract/{id}(id=${contract.contractID})}">DENY</a>
+            </div>
         </div>
     </div>
 
