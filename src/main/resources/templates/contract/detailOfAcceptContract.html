@@ -14,13 +14,14 @@
     <title>Detail Of Accept Contract</title>
 </head>
 <body>
+    <h3>Detail of Accept Contract</h3>
     <div class = "row">
         <div class = "detail-box">
-            <p>Babysitter Name:</p>
-            <p>Gender:</p>
-            <p>Education Level: </p>
-            <p>Date of Birth: </p>
-            <p>Start Date:</p>
+            <p th:text="${contract.babysitter.name}">Babysitter Name:</p>
+            <p th:text="${contract.babysitter.gender}">Gender:</p>
+            <p th:text="${contract.babysitter.highestEducation}">Education Level: </p>
+            <p th:text="${contract.babysitter.dateOfBirth}">Date of Birth: </p>
+            <p th:text="${contract.startDate}">Start Date:</p>
             </br>
 
         <div class="button-box">

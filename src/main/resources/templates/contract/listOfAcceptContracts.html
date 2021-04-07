@@ -17,6 +17,7 @@
     <header>
         <nav>
             <div class="row">
+                <i class="fas fa-baby-carriage logo"></i>
                 <ul class="main-nav">
                     <li><a href="#">About Us</a></li>
                     <li><a href="#">Feature</a></li>
@@ -59,6 +60,7 @@
                         <option value="Dec">Dec</option>
                     </select>
                 </li>
+                <li><a th:href="@{/contract/listOfAcceptContracts.html}" class="btn btn-ghost">Apply</a></li>
                 <li><a th:href="@{/contract/listOfAcceptContracts.html}" class="btn btn-full">Reset</a></li>
             </ul>
 
@@ -69,7 +71,7 @@
         </div>
     </div>
         <div class="contract-list-container">
-        <div class="contract-box" th:each="contract : ${contractList}">
+        <div class="contract-box" th:each="contract : ${contract}">
             <p th:text="${contract.contractID}">ContractID</p>
             <p th:text="${contract.familyID}">FamilyID</p>
             <p th:text="${contract.babysitter.name}">Babysitter's name</p>-->
@@ -117,8 +119,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./js/search.js"></script>
 
-<form action="/contract/detailOfAcceptContract" method="POST">
-    <button type="submit">Detail</button>
-</form>
+
 </body>
 </html>

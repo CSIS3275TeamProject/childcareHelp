@@ -30,6 +30,8 @@ body {
 
 .detail-box p {
     margin-bottom: 10px;
+    display: inline-block;
+    margin:5px;
 }
 
 .detail-box i {
