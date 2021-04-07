@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -13,11 +14,20 @@ public class ContractDAO {
     @Autowired
     private ContractRepository contractRepository;
 
-    public Collection<Contract> getContractsByFamilyId(long familyId) {
+    public List<Contract> getContractsByFamilyId(long familyId) {
         return contractRepository.findAllByFamilyId(familyId);
     }
 
-    public Collection<Contract> getContractsByBabysitterId(Integer snn) {
+
+    public Contract getContractsByContractId(long contractId) {
+        return contractRepository.findContractByContractID(contractId);
+    }
+
+    public List<Contract> getContractsByCondition(long familyId, String status, String yyyyMM) {
+        return contractRepository.findAllByCondition(familyId, status, yyyyMM);
+    }
+
+    public Collection<Contract> getContractsByBabysitterId(long snn) {
         return contractRepository.findAllByBabysitterId(snn);
     }
 
@@ -30,8 +40,9 @@ public class ContractDAO {
         return contractRepository.insert(contract);
     }
 
-    public Contract updateContract(Contract contract){
-        return contractRepository.save(contract);
+
+    public Contract updateContract(long contractId, String status) {
+        return contractRepository.updateContract(contractId, status);
     }
 
 }

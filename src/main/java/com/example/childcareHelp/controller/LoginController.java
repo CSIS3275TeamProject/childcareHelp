@@ -43,7 +43,7 @@ public class LoginController {
                 session.setAttribute("USER_INFO", userInfoDto);
                 System.out.println("[LOG]_doLogin_Succeed_Babysitter");
 
-                landingPage = "contract/listOfAcceptContracts";
+                landingPage = "redirect:/contract/listOfAcceptContracts";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Babysitter");
             }
@@ -56,7 +56,7 @@ public class LoginController {
                 userInfoDto.setUserType(0);
                 session.setAttribute("USER_INFO", userInfoDto);
                 System.out.println("[LOG]_doLogin_Succeed_Family");
-                landingPage = "babysitter/listOfBabysitters";
+                landingPage = "redirect:/babysitter/listOfBabysitters";
             }else{
                 System.out.println("[LOG]_doLogin_Failed_Family");
             }
@@ -72,9 +72,9 @@ public class LoginController {
      * execute Logout
      */
     @RequestMapping("logout")
-    public String doLogout() {
-
-        loginService.doLogout();
+    public String doLogout(HttpServletRequest req) {
+        HttpSession session = req.getSession();
+        session.invalidate();
         return "login";
     }
 

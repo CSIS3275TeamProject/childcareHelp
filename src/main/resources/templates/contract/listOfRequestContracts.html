@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -25,62 +26,67 @@
     </nav>
 </header>
 <h3>List Of Request Contracts</h3>
-<section class="listOfRequestContract" id="Requestedlist">
+<section class="listOfRequestContract" id="requestedlist">
     <div class="list-container">
+        <form th:object="${requestContractsCondition}" th:action="@{/contract/listOfRequestContracts}" method="POST">
         <div class="row search-bar">
             <h3>Filter Contracts</h3>
             <ul>
-                <li><input id="key" type="text" placeholder="id here"></li>
                 <li>
-                    <select name="year" id="year">
+                    <select th:field="*{status}" name="status" id="status">
+                        <option value="">Select Status</option>
+                        <option th:value="REQUESTED">REQUESTED</option>
+                        <option th:value="ACCEPTED">ACCEPTED</option>
+                        <option th:value="DENIED">DENIED</option>
+                        <option th:value="CANCELED">CANCELED</option>
+                    </select>
+                </li>
+                <li>
+                    <select th:field="*{year}" name="year" id="year">
                         <option value="">Select Year</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2020">2019</option>
-                        <option value="2020">2018</option>
-                        <option value="2020">2017</option>
+                        <option th:value="2021">2021</option>
+                        <option th:value="2020">2020</option>
+                        <option th:value="2019">2019</option>
+                        <option th:value="2018">2018</option>
+                        <option th:value="2017">2017</option>
                     </select>
                 </li>
                 <li>
-                    <select name="month" id="month">
+                    <select th:field="*{month}" name="month" id="month">
                         <option value="">Select Month</option>
-                        <option value="Jan">Jan</option>
-                        <option value="Feb">Feb</option>
-                        <option value="Mar">Mar</option>
-                        <option value="Apr">Apr</option>
-                        <option value="May">May</option>
-                        <option value="Jun">Jun</option>
-                        <option value="Jul">Jul</option>
-                        <option value="Aug">Aug</option>
-                        <option value="Sep">Sep</option>
-                        <option value="Oct">Oct</option>
-                        <option value="Nov">Nov</option>
-                        <option value="Dec">Dec</option>
+                        <option th:value="01">Jan</option>
+                        <option th:value="02">Feb</option>
+                        <option th:value="03">Mar</option>
+                        <option th:value="04">Apr</option>
+                        <option th:value="05">May</option>
+                        <option th:value="06">Jun</option>
+                        <option th:value="07">Jul</option>
+                        <option th:value="08">Aug</option>
+                        <option th:value="09">Sep</option>
+                        <option th:value="10">Oct</option>
+                        <option th:value="11">Nov</option>
+                        <option th:value="12">Dec</option>
                     </select>
                 </li>
-                <li><a th:href="@{/contract/listOfRequestContracts.html}" class="btn btn-full">Reset</a></li>
+                <li><button tyep="submit">Search</button></li></li>
+                <!--<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>-->
+                <!--<li><button onclick="resetRequestContractCondition()">Reset</button></li>-->
+                <!--//<li><a th:href="@{/contract/listOfRequestContracts}" class="btn btn-full">Search</a></li>
+                <li><a th:href="@{/contract/listOfRequestContracts.html}" class="btn btn-full">Reset</a></li>-->
             </ul>
 
         </div>
-
-
-
-            </div>
-        </div>
-            <div class="contract-list-container">
-            <div class="contract-box"th:each="contract : ${contract}">
+        </form>
+        <div class="contract-list-container">
+            <div class="contract-box"th:each="contract : ${contractList}">
                 <p th:text="${contract.contractID}">ContractID</p>
-                <p th:text="${contract.familyID}">FamilyID</p>
-                <p th:text="${contract.babysitterName}">Babysitter's name</p>
+                <p th:text="${contract.babysitter.name}">Babysitter's name</p>
                 <p th:text="${contract.startDate}">Start Date</p>
-                <p th:text="${contract.endDate}">End Date</p>
                 <p th:text="${contract.startTime}">Start Time</p>
+                <p th:text="${contract.endDate}">End Date</p>
                 <p th:text="${contract.endTime}">End Time</p>
                 <p th:text="${contract.status}">Status</p>
-
-
-                <a th:href="@{/contract/listOfAcceptContracts.html/{id}(id=${contract.id})}" class="btn btn-full">See Detail</a>
-
+                <a th:href="@{/contract/detailOfRequestContract/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>
             </div>
         </div>
     </div>
@@ -116,44 +122,5 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="./js/search.js"></script>
-
-<form action="/contract/detailOfAcceptContract" method="POST">
-    <button type="submit">Detail</button>
-</form>
-</body>
-
-
-
-
-
-<table>
-    <tr>
-        <td>Contract#</td>
-        <td>familyID</td>
-        <td>babySitter name</td>
-        <td>startDate</td>
-        <td>endDate</td>
-        <td>startTime</td>
-        <td>endTime</td>
-        <td>status</td>
-    </tr>
-
-    <tr th:each="contractsList : ${allContracts}">
-        <td><span th:text="${contractsList.contractID}"></span></td>
-        <td><span th:text="${contractsList.familyID}"></span></td>
-        <td><span th:text="${contractsList.babysitterName}"></span></td>
-        <td><span th:text="${contractsList.startDate}"></span></td>
-        <td><span th:text="${contractsList.endDate}"></span></td>
-        <td><span th:text="${contractsList.startTime}"></span></td>
-        <td><span th:text="${contractsList.endTime}"></span></td>
-        <td><span th:text="${contractsList.status}"></span></td>
-    </tr>
-
-
-</table>
-
-<form action="/contract/detailOfRequestContract" method="POST">
-    <button type="submit">Detail</button>
-</form>
 </body>
 </html>

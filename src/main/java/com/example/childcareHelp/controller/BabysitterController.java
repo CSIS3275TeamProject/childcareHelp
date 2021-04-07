@@ -39,8 +39,8 @@ public class BabysitterController {
      * register the information of a babysitter
      */
     @PostMapping("/registerBabysitter")
-    public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,
-                                     @ModelAttribute("loginInfo") LoginInfoDto loginInfoDto, Model model) {
+    public String registerBabysitter(@ModelAttribute("babysitter")  Babysitter babysitter,Model model) {
+
         boolean result = babysitterService.checkExistedBabysitter(babysitter.getEmail());
         System.out.println("[LOG]_registerBabysitter_result="+result );
         if(!result) {
@@ -50,7 +50,7 @@ public class BabysitterController {
             model.addAttribute("ERROR_MESSAGE","The email you entered is already existed");
             return "/babysitter/babysitterRegister";
         }
-        return "/login";
+        return "redirect:/login";
     }
 
 
@@ -75,11 +75,18 @@ public class BabysitterController {
     }
 
 
-     @RequestMapping("/listOfBabysitterss/{snn}")
-     @ResponseBody
-     public Optional<Babysitter> getBabysitter(@PathVariable Integer snn) {
+    @RequestMapping("/listOfBabysitterss/{snn}")
+    @ResponseBody
+    public Optional<Babysitter> getBabysitter(@PathVariable Integer snn) {
          return babysitterService.getBabysitter(snn);
-     }
+    }
+
+    @RequestMapping("/listOfBabysitters/name={input}/gender={gender}/degree={degree}")
+    public String getBabysittersByCondition(@PathVariable("input") String input, @PathVariable("gender") String gender, @PathVariable("degree") String degree, Model model) {
+        List<Babysitter> babysitters = babysitterService.getBabysittersByCondition(input, gender, degree);
+        model.addAttribute("babysitters", babysitters);
+        return "babysitter/listOfBabysitters";
+    }
 
 
 }

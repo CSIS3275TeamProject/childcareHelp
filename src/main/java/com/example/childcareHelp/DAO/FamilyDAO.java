@@ -16,8 +16,8 @@ public class FamilyDAO {
     @Autowired
     private FamilyRepository familyRepository;
 
-    public Optional<Family> getFamilyById(Integer familyId) {
-        return familyRepository.findById(familyId);
+    public Family getFamilyByFamilyId(long familyId) {
+        return familyRepository.findByFamilyID(familyId);
     }
 
     public Family getFamilyByEmail(String email) {

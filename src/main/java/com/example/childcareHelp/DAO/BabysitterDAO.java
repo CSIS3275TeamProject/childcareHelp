@@ -28,7 +28,7 @@ public class BabysitterDAO {
         return babysitterRepository.findBabysitterByCondition(babysitter);
     }
 
-    public Optional<Babysitter> getBabysitterBySnn(Integer snn) {
+    public Optional<Babysitter> getBabysitterBySnn(long snn) {
         return babysitterRepository.findById(snn);
     }
     public Babysitter getBabysitter(String email, String password) {
@@ -38,6 +38,20 @@ public class BabysitterDAO {
     public Babysitter createBabysitter(Babysitter babysitter){
         System.out.println("[LOG]_BabysitterDAO_createrBabysitter_");
         return babysitterRepository.insert(babysitter);
+    }
+
+    public List<Babysitter> getBabysittersByCondition(String input, String gender, String degree) {
+        List<Babysitter> babysitters;
+        if(gender.equals(degree)) {
+            babysitters = babysitterRepository.findByCondition(input);
+        } else if(degree.equals("0")) {
+            babysitters = babysitterRepository.findByCondition(input, gender);
+        } else if(gender.equals("0")) {
+            babysitters = babysitterRepository.findByConditions(input, degree);
+        } else {
+            babysitters = babysitterRepository.findByCondition(input, gender, degree);
+        }
+        return babysitters;
     }
 }
 

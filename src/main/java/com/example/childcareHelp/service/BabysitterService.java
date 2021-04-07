@@ -29,12 +29,16 @@ BabysitterService {
         return babysitterDAO.getAllBabysitters();
     }
 
-    public Optional<Babysitter> getBabysitter(Integer snn) {
+    public Optional<Babysitter> getBabysitter(long snn) {
         return babysitterDAO.getBabysitterBySnn(snn);
     }
 
     public Babysitter createBabysitter(Babysitter babysitter) {
         System.out.println("[LOG]_BabysitterService_createrBabysitter_");
         return babysitterDAO.createBabysitter(babysitter);
+    }
+
+    public List<Babysitter> getBabysittersByCondition(String input, String gender, String degree) {
+        return babysitterDAO.getBabysittersByCondition(input, gender, degree);
     }
 }

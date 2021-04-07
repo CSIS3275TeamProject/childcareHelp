@@ -22,11 +22,13 @@ public class Contract {
     private String startTime;
     @DateTimeFormat(pattern="HH:mm:ss")
     private String endTime;
-    @Value("${some.key:pending}")
+//    @Value("${some.key:pending}")
     private String status;
-    private Integer snn;
+    private long snn;
     private long familyID;
-    private String babysitterName;
+    private Family family;
+    private Babysitter babysitter;
+
 
 
     public long getContractID() {
@@ -77,11 +79,11 @@ public class Contract {
         this.status = status;
     }
 
-    public Integer getSnn() {
+    public long getSnn() {
         return snn;
     }
 
-    public void setSnn(Integer snn) {
+    public void setSnn(long snn) {
         this.snn = snn;
     }
 
@@ -93,11 +95,20 @@ public class Contract {
         this.familyID = familyID;
     }
 
-    public String getBabysitterName() {
-        return babysitterName;
+
+    public Family getFamily() {
+        return family;
     }
 
-    public void setBabysitterName(String babysitterName) {
-        this.babysitterName = babysitterName;
+    public void setFamily(Family family) {
+        this.family = family;
+    }
+
+    public Babysitter getBabysitter() {
+        return babysitter;
+    }
+
+    public void setBabysitter(Babysitter babysitter) {
+        this.babysitter = babysitter;
     }
 }
