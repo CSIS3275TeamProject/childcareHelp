@@ -75,7 +75,7 @@ public class LoginController {
     public String doLogout(HttpServletRequest req) {
         HttpSession session = req.getSession();
         session.invalidate();
-        return "login";
+        return "/main";
     }
 
     /*
@@ -83,6 +83,7 @@ public class LoginController {
      */
     @RequestMapping("")
     public String goMain() {
-        return "main";
+        return "/main";
     }
+
 }
