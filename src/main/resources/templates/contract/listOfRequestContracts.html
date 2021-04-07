@@ -79,12 +79,7 @@
         </form>
         <div class="contract-list-container">
             <div class="contract-box"th:each="contract : ${contractList}">
-                <p th:text="${contract.contractID}">ContractID</p>
                 <p th:text="${contract.babysitter.name}">Babysitter's name</p>
-                <p th:text="${contract.startDate}">Start Date</p>
-                <p th:text="${contract.startTime}">Start Time</p>
-                <p th:text="${contract.endDate}">End Date</p>
-                <p th:text="${contract.endTime}">End Time</p>
                 <p th:text="${contract.status}">Status</p>
                 <a th:href="@{/contract/detailOfRequestContract/{id}(id=${contract.contractID})}" class="btn btn-full">See Detail</a>
             </div>
