@@ -17,21 +17,21 @@
     <h3>Detail of Accept Contract</h3>
     <div class = "row">
         <div class = "detail-box">
-            <p th:text="${contract.family.name}">Family Name:</p>
-            <p th:text="${contract.family.address}">Address:</p>
-            <p th:text="${contract.family.phoneNumber}">PhoneNumber:</p>
-            <p th:text="${contract.family.email}">Email:</p>
-            <p th:text="${contract.family.maritalStatus}">Marital Status:</p>
+            <p>Family Name:</p><p th:text="${contract.family.name}"></p> </br>
+            <p>Address:</p><p th:text="${contract.family.address}"></p></br>
+            <p>PhoneNumber:</p><p th:text="${contract.family.phoneNumber}"></p></br>
+            <p>Email:</p><p th:text="${contract.family.email}"></p></br>
+            <p>Marital Status:</p><p th:text="${contract.family.maritalStatus}"></p></br>
             <div th:each="child : ${contract.family.children}">
-                <p th:text="${child.name}">Child's name</p>
-                <p th:text="${child.dateOfBirth}">Child's date of birth</p>
-                <p th:text="${child.gender}">Child's Gender</p>
+            <p>Child's name: </p><p th:text="${child.name}"></p></br>
+            <p>Child's date of birth: </p><p th:text="${child.dateOfBirth}"></p></br>
+            <p>Child's Gender: </p><p th:text="${child.gender}"></p></br>
             </div>
-            <p th:text="${contract.startDate}">Start Date:</p>
-            <p th:text="${contract.startTime}">Start Time:</p>
-            <p th:text="${contract.endDate}">End Date:</p>
-            <p th:text="${contract.endTime}">End Time:</p>
-            <p th:text="${contract.status}">Status:</p>
+            <p>Start Date:</p><p th:text="${contract.startDate}"></p></br>
+            <p>Start Time:</p><p th:text="${contract.startTime}"></p></br>
+            <p>End Date:</p><p th:text="${contract.endDate}"></p></br>
+            <p>End Time:</p><p th:text="${contract.endTime}"></p></br>
+            <p>Status:</p><p th:text="${contract.status}"></p></br>
             </br>
 
             <div class="button-box" th:switch="${contract.status}">

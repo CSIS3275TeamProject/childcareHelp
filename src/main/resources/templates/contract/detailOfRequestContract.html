@@ -17,15 +17,15 @@
 <h3>Detail of request Contract</h3>
 <div class = "row">
     <div class = "detail-box">
-        <p th:text="${contract.babysitter.name}">Babysitter Name:</p>
-        <p th:text="${contract.babysitter.gender}">Gender:</p>
-        <p th:text="${contract.babysitter.highestEducation}">Education Level: </p>
-        <p th:text="${contract.babysitter.dateOfBirth}">Date of Birth: </p>
-        <p th:text="${contract.startDate}">Start Date:</p>
-        <p th:text="${contract.startTime}">Start Time:</p>
-        <p th:text="${contract.endDate}">End Date:</p>
-        <p th:text="${contract.endTime}">End Time:</p>
-        <p th:text="${contract.status}">Status:</p>
+        <p>Babysitter Name:</p><p th:text="${contract.babysitter.name}"></p> </br>
+        <p>Gender:</p><p th:text="${contract.babysitter.gender}"></p></br>
+        <p>Education Level: </p><p th:text="${contract.babysitter.highestEducation}"></p></br>
+        <p>Date of Birth: </p><p th:text="${contract.babysitter.dateOfBirth}"></p></br>
+        <p>Start Date:</p><p th:text="${contract.startDate}"></p></br>
+        <p>End Date:</p><p th:text="${contract.endDate}"></p></br>
+        <p>Start Time:</p><p th:text="${contract.startTime}"></p></br>
+        <p>End Time:</p><p th:text="${contract.endTime}"></p></br>
+        <p>Status:</p><p th:text="${contract.status}"></p></br>
         </br>
 
         <div class="button-box" th:switch="${contract.status}">
