@@ -104,7 +104,7 @@ public class ContractController {
     @RequestMapping("/denyContract/{contractId}")
     public String denyContract(@PathVariable long contractId, Model model) {
         Contract contract = contractService.getContractsByContractId(contractId);
-        contract.setStatus("ACCEPTED");
+        contract.setStatus("DENIED");
         contractService.updateContractStatus(contract);
         return "redirect:/contract/listOfAcceptContracts";
     }

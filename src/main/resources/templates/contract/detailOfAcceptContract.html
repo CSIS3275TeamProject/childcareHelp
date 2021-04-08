@@ -35,11 +35,14 @@
             <p>&nbsp;&nbsp;-&nbsp;End Time:</p><p th:text="${contract.endTime}"></p></br>
             <p>&nbsp;&nbsp;-&nbsp;Status:</p><p th:text="${contract.status}"></p></br>
             </br>
-
-            <div class="button-box" th:switch="${contract.status}">
+            <div class="button-box">
                 <a class="btn btn-full" href="/contract/listOfAcceptContracts">Back</a>
-                <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/acceptContract/{id}(id=${contract.contractID})}">ACCEPT</a>
-                <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/denyContract/{id}(id=${contract.contractID})}">DENY</a>
+                <span th:switch="${contract.status}">
+                    <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/acceptContract/{id}(id=${contract.contractID})}">ACCEPT</a>
+                </span>
+                <span th:switch="${contract.status}">
+                    <a th:case="REQUESTED" class="btn btn-ghost" th:href="@{/contract/denyContract/{id}(id=${contract.contractID})}">DENY</a>
+                </span>
             </div>
         </div>
     </div>
