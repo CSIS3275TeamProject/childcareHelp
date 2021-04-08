@@ -14,7 +14,10 @@
     <title>Request New Contract</title>
 </head>
 <body>
-<h1>Request New Contract</h1>
+
+    <div class="row section-title">
+        <h2>Request New Contract</h2>
+    </div>
 <form action="/contract/registerContract" method="POST">
     <div class="row">
         <form th:object="${contract}" th:action="@{/contract/registerContract}" action="#" method="POST">

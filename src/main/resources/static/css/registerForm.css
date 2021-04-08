@@ -11,3 +11,9 @@ label {
 .snn, .familyID {
     display: none;
 }
+
+h2 {
+    margin-bottom: 0px;
+    margin-top: 30px;
+    color: #fff;
+}

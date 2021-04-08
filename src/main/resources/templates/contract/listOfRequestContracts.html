@@ -25,9 +25,16 @@
         </div>
     </nav>
 </header>
-<h3>List Of Request Contracts</h3>
+
 <section class="listOfRequestContract" id="requestedlist">
     <div class="list-container">
+        
+        <div class="row setion-title">
+            <h2>List Of Request Contracts</h2>
+        </div>
+        <div class="row link-contract">
+            <a href="/babysitter/listOfBabysitters">See the babysitter list</a>
+        </div>
         <form th:object="${requestContractsCondition}" th:action="@{/contract/listOfRequestContracts}" method="POST">
         <div class="row search-bar">
             <h3>Filter Contracts</h3>
