@@ -20,15 +20,16 @@
 
 <div class = "row">
     <div class = "detail-box">
-        <p>Babysitter Name:</p><p th:text="${contract.babysitter.name}"></p> </br>
-        <p>Gender:</p><p th:text="${contract.babysitter.gender}"></p></br>
-        <p>Education Level: </p><p th:text="${contract.babysitter.highestEducation}"></p></br>
-        <p>Date of Birth: </p><p th:text="${contract.babysitter.dateOfBirth}"></p></br>
-        <p>Start Date:</p><p th:text="${contract.startDate}"></p></br>
-        <p>End Date:</p><p th:text="${contract.endDate}"></p></br>
-        <p>Start Time:</p><p th:text="${contract.startTime}"></p></br>
-        <p>End Time:</p><p th:text="${contract.endTime}"></p></br>
-        <p>Status:</p><p th:text="${contract.status}"></p></br>
+        <p th:text="${contract.contractTitle}"></p> </br></br>
+        <p>&nbsp;&nbsp;-&nbsp;Babysitter Name:</p><p th:text="${contract.babysitter.name}"></p> </br>
+        <p>&nbsp;&nbsp;-&nbsp;Gender:</p><p th:text="${contract.babysitter.gender}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;Education Level: </p><p th:text="${contract.babysitter.highestEducation}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;Date of Birth: </p><p th:text="${contract.babysitter.dateOfBirth}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;Start Date:</p><p th:text="${contract.startDate}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;End Date:</p><p th:text="${contract.endDate}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;Start Time:</p><p th:text="${contract.startTime}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;End Time:</p><p th:text="${contract.endTime}"></p></br>
+        <p>&nbsp;&nbsp;-&nbsp;Status:</p><p th:text="${contract.status}"></p></br>
         </br>
 
         <div class="button-box" th:switch="${contract.status}">
